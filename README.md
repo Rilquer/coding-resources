@@ -8,7 +8,7 @@ A repository to store tutorials and other coding resources, both finalized and i
 
 ### Evolutionary Biology
 
-- [Extracting and visualizing Genetic Diversity Distribution from Bird barcode data](http://htmlpreview.github.io/?) - IN PROGRESS
+- [Extracting and visualizing Genetic Diversity Distribution from Bird barcode data](http://htmlpreview.github.io/?https://github.com/Rilquer/coding-resources/blob/main/evo-bio/bird-barcode/aln_gendiv.html) - IN PROGRESS
   - This quick tutorial is being made along with the [RoLE Project]() in the Atlantic Forest of Brazil. It currently covers introductory topics on importing and organizing DNA sequence in R for calculation of genetic diversity distributions (GDD) of bird communities.
 
 
