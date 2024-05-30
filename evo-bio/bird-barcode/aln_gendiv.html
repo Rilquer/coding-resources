@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rilquer Mascarenhas">
+
+<title>Aligning bird COI data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="aln_gendiv_files/libs/clipboard/clipboard.min.js"></script>
+<script src="aln_gendiv_files/libs/quarto-html/quarto.js"></script>
+<script src="aln_gendiv_files/libs/quarto-html/popper.min.js"></script>
+<script src="aln_gendiv_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="aln_gendiv_files/libs/quarto-html/anchor.min.js"></script>
+<link href="aln_gendiv_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="aln_gendiv_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="aln_gendiv_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="aln_gendiv_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="aln_gendiv_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Aligning bird COI data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rilquer Mascarenhas </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>This document will go through steps by steps on how to import non-aligned sequences in the fasta format, organize them by species and locality based on a separate spreadsheet, and utilizing that dataset for calculation of genetic diversity.</p>
+<p>At this point, you should have one or more fasta files exported from Geneious of the amplified COI sequences for the bird samples we’ll be working with. The code below will go through reading those sequences into R and organizing them based on the species and locality.</p>
+<section id="step-1.-importing-dna-sequences" class="level4">
+<h4 class="anchored" data-anchor-id="step-1.-importing-dna-sequences">Step 1. Importing DNA sequences</h4>
+<p>Before starting any pipeline in R (or in anything in life, actually), we should have clear in our minds what is our final goal. Here, our final goal in order to perform the alignment is to have a single table where we have the sample code, the island that sample came from, the species to which that sample belongs, and its DNA sequence. With that table, we can split sequences per island per species, since we want the genetic diversity per island per species, and then perform the alignment and calculation of genetic diversity</p>
+<p>Our fasta files already have the codes and the sequences. The information on island and species names is in our mastersheet that tracks all our labwork. Therefore, we need to import both (sequence and mastersheet) and merge their info.</p>
+<p>We will first import the DNA sequences from fasta files. As you know, fasta files follow a structure where you first have the sample name in a line that starts with <code>&gt;</code>, and then the next line is the DNA sequence for that sample. This is not in a table format, where sample name is in one column and DNA sequence is in another column. So we need to make it a table first.</p>
+<p>Most of our data organization and management (something we usually call <em>data wrangling</em>) will be done using the package <code>tidyverse</code>. So, we first load this package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>tidyverse</code> is a collection of several packages with many useful functions to manipulate data. To read the fasta files, we will make use of the function <code>read_lines()</code>. This function will get any plain text file and read each line as a different row.</p>
+<p>Because we have many different fasta files (from different plates and different people analyzing it), we need to read all those files and merge them into one object. Thankfully, the function <code>read_lines()</code> already does this for us if we provide a list of all the files it needs to read. To create that list, we will use the function <code>list.files()</code>. This function goes into a folder you specify and returns a list of all the files in it. We will use the option <code>full.names = T</code>, so the list of files contains the entire path of the directory (e.g., <code>data/bird/fasta/role.fasta</code>, etc), instead of just the name of the files.</p>
+<p>To make things easier, we will use the <em>pipe</em> function in R, which is represented by the simple <code>%&gt;%</code>. This function basically grabs whatever is in the left and throws into the function in the right as the first argument. So, here, we are using the function <code>list.files()</code>, and then the list of files that comes out of it we immediately apply to <code>read_lines()</code> and save all that to an object named <code>fasta</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fasta <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">'data/bird/fasta/'</span>,<span class="at">full.names =</span> T) <span class="sc">%&gt;%</span> <span class="fu">read_lines</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>We can use the function <code>View()</code> to visualize the the <code>fasta</code> object in a different tab. That will let us confirm that the files were read correctly.</p>
+</blockquote>
+<p>This object is still not in the format we need: instead of having a column with sample code and another with the sequence, we have it all intercalated in one column. We can use some <code>tidyverse</code> functions to separate them.</p>
+<p>First, let’s transform the <code>fasta</code> object in a table, using the function <code>tibble()</code>. That will make it easier for us to select rows and columns. Because using the <code>tibble()</code> function creates a column where the name equals a dot <code>.</code>, we will change that to make it easier to use that column in the future. We will use the function <code>rename()</code> for that. This function requires you to say the new name of the column in the following format: <code>NEW_NAME = 'OLD_NAME'</code>. So we will just say <code>data = '.'</code>, meaning the new name for <code>.</code> will be <code>data</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fasta <span class="ot">&lt;-</span> fasta <span class="sc">%&gt;%</span> <span class="fu">tibble</span>() <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">data =</span> <span class="st">'.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we will use that column to filter only the rows that contain the symbol <code>&gt;</code>. That will give us only the sample codes, since codes are only in the lines with that symbol. To check if the row in column <code>data</code> has that symbol, we will use the function <code>str_detect</code>. This function requires you to say the column name + the character you wanna detect.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> fasta <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(data,<span class="st">'&gt;'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A quick look at <code>code</code> will show you that the sample codes came along with the <code>&gt;</code> symbol. This will be an issue when we try to find the sample information: we need to look up the codes, but if we ask R to look up these codes in our labwork spreadsheet, it won’t find any match because the symbol <code>&gt;</code> is not present in our spreadsheet. Therefore, we need to remove it.</p>
+<p>A good function to do so is the function <code>mutate()</code>. This function will modify existing columns or create new columns. All you have to do is give the name of the column and say how you wanna modify it. Here, we need to find a way to replace the symbol <code>&gt;</code> with nothing (i.e., no characters) in all rows of column data. We can use the function <code>str_replace()</code> for that job. This function needs to know the pattern you want to replace (which is <code>&gt;</code>), what you wanna replace it with (which should be <code>''</code>) and where to find the elements to replace.</p>
+<p>Finally, let’s rename the column data again, to match the information it has: sample code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> code <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">str_replace</span>(data,<span class="at">pattern =</span> <span class="st">'&gt;'</span>,<span class="at">replacement =</span> <span class="st">''</span>)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">code =</span> <span class="st">'data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>NOTE: We could further condensed th previous two lines in just one line, like this:</p>
+<p><code>code &lt;- fasta %&gt;% filter(str_detect(data,'&gt;')) %&gt;% mutate(data = str_replace(data,pattern = '&gt;',replacement = '')) %&gt;% rename(code = 'data')</code></p>
+</blockquote>
+<p>Now, we just need to do the same but to retrieve the rows that DO NOT have the symbol <code>&gt;</code>. To do that, we can use the exact same code as above and add an <code>!</code> right before the condition in the <code>filter()</code> function. This way, we are telling R to retrieving everything that DOES NOT match the condition (i.e., everything that does not have the symbol <code>&gt;</code>). Also, this time we do not need to use <code>mutate()</code> with <code>str_replace()</code> because the symbol <code>&gt;</code> is not a problem anymore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sequence <span class="ot">&lt;-</span> fasta <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(data,<span class="st">'&gt;'</span>)) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">sequence =</span> <span class="st">'data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we check both our objects, you will notice they have the same number of rows, one of them having the codes and the other one having the sequences. Because they were in order in the original file, they are also in order here. So all we need to do is to merge them into a table using the function <code>tibble()</code>. We will call this table <code>coi_data</code> because this is already the beginning of the final table we have for our goal.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(code,sequence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a quick look at the object.</p>
+</section>
+<section id="step-2.-importing-sample-information" class="level4">
+<h4 class="anchored" data-anchor-id="step-2.-importing-sample-information">Step 2. Importing sample information</h4>
+<p>Notice that we are halfway with our final goal: we have the code and sequences, now we need the island and species information. For that, we will import the <a href="https://docs.google.com/spreadsheets/d/1tQkmUW9IkkXxgDCp9EcJFQCjLkgYRo-R_k8OljbaGlo/edit?usp=sharing">spreadshet</a> we use to keep track of our samples. This spreadsheet has all the information of our samples, and we will match that information to our sequences based on the code.</p>
+<p>We downloaded our spreadsheet from Google Sheets in the CSV format and then renamed it to <code>bird_specimens</code>. Finally, we uploaded it to this project in the cloud (location <code>data/bird/</code>). We can then use one of the <code>tidyverse</code> function, <code>read_csv()</code>, to import the spreadsheet. We will for now save it to an object called <code>info</code> (we are trying to keep our object names short just so we can type it out faster)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>info <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/bird/bird_specimens.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we call this object, we get a shortened view of the content in the spreadsheet. We can use that to check if everything looks okay…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 286 × 30
+   museum box      loc_box tissue island longitude latitude type  code  binomial
+   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   
+ 1 lebi   role-fi… A1      B001   arari…     -39.3    -7.37 musc… RB1   Synalla…
+ 2 lebi   role-fi… B1      B013   arari…     -39.3    -7.37 musc… RB10  Cnemotr…
+ 3 lebi   role-fi… C1      B137   ubaja…     -40.9    -3.84 &lt;NA&gt;  RB100 Synalla…
+ 4 CAHZ   role-lo… A1      TCAHZ… areia      -35.7    -6.97 &lt;NA&gt;  RB143 Basileu…
+ 5 lebi   role-fi… C3      B141   ubaja…     -40.9    -3.84 &lt;NA&gt;  RB102 Pheugop…
+ 6 lebi   role-fi… C4      B142   ubaja…     -40.9    -3.84 &lt;NA&gt;  RB103 Taraba …
+ 7 lebi   role-fi… C5      B146   ubaja…     -40.9    -3.84 &lt;NA&gt;  RB104 Pheugop…
+ 8 lebi   role-fi… C6      B148   ubaja…     -40.9    -3.84 &lt;NA&gt;  RB105 Synalla…
+ 9 lebi   role-fi… C7      B154   batur…     -38.9    -4.26 musc… RB106 Arremon…
+10 lebi   role-fi… C8      B156   batur…     -38.9    -4.26 &lt;NA&gt;  RB107 Sclerur…
+# ℹ 276 more rows
+# ℹ 20 more variables: Notes &lt;chr&gt;, person &lt;chr&gt;, next_step &lt;chr&gt;,
+#   total_dna_amount &lt;dbl&gt;, extr_date_dna1 &lt;chr&gt;, dna1_qubit_date &lt;date&gt;,
+#   `dna_1_ng/µl` &lt;dbl&gt;, dna_1_tot_µl &lt;dbl&gt;, dna_1_gel &lt;chr&gt;,
+#   dna_1_gelfile &lt;chr&gt;, dna_1_loc &lt;chr&gt;, gel_ext_notes &lt;chr&gt;,
+#   extr_date_dna2 &lt;chr&gt;, reextr_loc &lt;chr&gt;, pcr_date &lt;chr&gt;, pcr_date_2 &lt;chr&gt;,
+#   pcr_gelfile &lt;chr&gt;, pcr_gelfile_2 &lt;chr&gt;, loc_in_box &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>…or we can use the function <code>glimpse()</code> to take a look at all the columns in the spreadsheet, so we can make sure everything is correct.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 286
+Columns: 30
+$ museum           &lt;chr&gt; "lebi", "lebi", "lebi", "CAHZ", "lebi", "lebi", "lebi…
+$ box              &lt;chr&gt; "role-field-1", "role-field-1", "role-field-2", "role…
+$ loc_box          &lt;chr&gt; "A1", "B1", "C1", "A1", "C3", "C4", "C5", "C6", "C7",…
+$ tissue           &lt;chr&gt; "B001", "B013", "B137", "TCAHZ00001", "B141", "B142",…
+$ island           &lt;chr&gt; "araripe", "araripe", "ubajara", "areia", "ubajara", …
+$ longitude        &lt;dbl&gt; -39.31042, -39.31042, -40.89817, -35.74550, -40.89817…
+$ latitude         &lt;dbl&gt; -7.366410, -7.366410, -3.839450, -6.968616, -3.839450…
+$ type             &lt;chr&gt; "muscle", "muscle", NA, NA, NA, NA, NA, NA, "muscle",…
+$ code             &lt;chr&gt; "RB1", "RB10", "RB100", "RB143", "RB102", "RB103", "R…
+$ binomial         &lt;chr&gt; "Synallaxis scutata", "Cnemotriccus fuscatus", "Synal…
+$ Notes            &lt;chr&gt; "no band in pcr", "no band in pcr", NA, NA, NA, NA, "…
+$ person           &lt;chr&gt; "Sophia", "Sophia", "Sophia", "Crystal", "Sophia", "S…
+$ next_step        &lt;chr&gt; NA, NA, "sequencing", "rePCR", "sequencing", "sequenc…
+$ total_dna_amount &lt;dbl&gt; 3864.0, 15532.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0…
+$ extr_date_dna1   &lt;chr&gt; "2023-10-10", "2023-10-18", NA, "2024-02-14", NA, NA,…
+$ dna1_qubit_date  &lt;date&gt; 2023-10-17, 2013-10-20, NA, NA, NA, NA, NA, NA, NA, …
+$ `dna_1_ng/µl`    &lt;dbl&gt; 84.0, 353.0, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ dna_1_tot_µl     &lt;dbl&gt; 46, 44, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 44, N…
+$ dna_1_gel        &lt;chr&gt; "2023-10-13", "2023-10-20", NA, NA, NA, NA, NA, NA, "…
+$ dna_1_gelfile    &lt;chr&gt; "03-05-2024_ext_sh", "03-05-2024_ext_sh", NA, "2024-0…
+$ dna_1_loc        &lt;chr&gt; "role-dna-1_A1", "role-dna-1_A5", "role-dna-1_H9", "r…
+$ gel_ext_notes    &lt;chr&gt; "band", "no band", "band", "faint band", "no band", "…
+$ extr_date_dna2   &lt;chr&gt; "05-08-2024", "05-08-2024", NA, NA, NA, NA, "05-14-20…
+$ reextr_loc       &lt;chr&gt; "reextr_A1", "reextr_A6", NA, NA, NA, NA, "reextr_D7"…
+$ pcr_date         &lt;chr&gt; "05-09-2024", NA, NA, "2024-05-14", NA, NA, "2024-05-…
+$ pcr_date_2       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ pcr_gelfile      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, "2024-04-02-cp-sh-2",…
+$ pcr_gelfile_2    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ loc_in_box       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, "PCR-box-1_A12", NA, …
+$ sequence_quality &lt;chr&gt; NA, NA, "good sequence. Mathces with blast", NA, "goo…</code></pre>
+</div>
+</div>
+<p>Note that we don’t need all that information present in this table. We only need the columns <strong>code</strong>, <strong>island</strong> and <strong>binomial</strong> (this last one has the species name). So we are going to use the function <code>select()</code> to retrieve just those columns.</p>
+<blockquote class="blockquote">
+<p>Note: <code>select()</code> is a function to retrieve columns by name. <code>filter()</code> is a function to retrieve rows, based on a condition.</p>
+</blockquote>
+<p>In the code below, we call our object <code>samples</code> and then we <em>pipe</em> into the function select. Then, inside select, we can tell the columns we want. We will save everything to the same object, so we do <code>info &lt;-</code> in the beginning.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>info <span class="ot">&lt;-</span> info <span class="sc">%&gt;%</span> <span class="fu">select</span>(code,island,binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a quick look at samples to see if things worked.</p>
+<p>Now that we have both <code>coi_data</code> and <code>info</code> objects, we will use the magic of <em>joining</em> in <code>tidyverse</code>. This <code>join</code> functions are very useful when we want to add info from one table to another by matching their info in a specific column, which is exactly what we want to do here. We can’t just merge the two tables because they have different number of rows and they are not in the same order. What we need R to do is to get the code of each of our sequences and then look for that code in our labwork spreadsheet and attach the info for that sample in our table. Here, we are going to use the function <code>left_join()</code> to do just that.</p>
+<p>We start with <code>coi_data</code> and we pipe it into <code>left_join()</code>. In this function, we tell where is the info that we wanna look up (i.e., the <code>info</code> object) and we tell which column should be used to match the two tables (i.e., the column <code>code</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(info,<span class="at">by=</span><span class="st">'code'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we look at <code>coi_data</code> now, you will see that we have the original info (code and sequence) plus the new info from our labwork spreadsheet (island and species name). This is our final spreadsheet that we need to start splitting sequences per island per species.</p>
+</section>
+<section id="step-3.-splitting-per-island-per-species" class="level4">
+<h4 class="anchored" data-anchor-id="step-3.-splitting-per-island-per-species">Step 3. Splitting per island per species</h4>
+<p>Our <em>next</em> final goal is to have a list of species per island and their respective genetic diversity. Therefore, we need to first split all the sequences we have per island, then per species, then align within each species and finally calculate their genetic diversity.</p>
+<p>An easy way to split tables in R is using the functions <code>group_by()</code> and <code>summarize()</code>. <code>group_by()</code> will create subgroups of rows in a table based on the values of specific columns. Then any operation we do on that table will be performed per group (instead of the whole table). We can use that to retrieve sequences per island per species. <code>summarize()</code> allows us to create a new table that is based on that grouping and has new values that is calculated from those groups.</p>
+<p>We can start by using <code>group_by()</code> and telling what columns we want to use to group. Basically, we want to group by islands, and then within islands we want to group by species names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(island,binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you look at <code>coi_data</code>, you will notice nothing changes in our table, except that at the top of its information, we now see something that says the groups in our table. This means that our table is now grouped, and any operations will do will be performed per group. <code>group_by()</code> does not modify the content of your data, it just lets R know that the rows should be grouped based on the column value when we perform operations.</p>
+<p>Now, if we use <code>summarize()</code>, we will modify the entire table. <code>summarize()</code> will keep the columns that are used for groups (i.e., island and binomial), but will delete all others and create a new column based on the info we give to it. In our case, we want our new column to have all the sequences for that island and that species. So, we can tell <code>summarize()</code> to create a new column from the sequence column. We use the function <code>list()</code> to avoid summarizing merging all the sequences of the species into one single sequence. What we want is to keep the sequences separated as two elements within that row.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sequence =</span> <span class="fu">list</span>(sequence))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you look at the table now, you will see we got exactly what we wanted. The table changed completely: our first column is our first group (island), the second column is the second group (binomial) and the third column was created by summarize and, for each row, it contains all the sequences for that species in that island. We can check those sequences by calling for the location in the table specifically. For instance, to see the sequences for the first island and species in the table (row 1), we can use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>sequence[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "CTTTGGCGCNTGAGCTGGAATAATTGGAACCGCCCTCAGCCTCCTTATTCGAGCCGAACTTGGACAACCAGGAACCCTACTAGGAGACGACCAAATTTACAATGTAATTGTTACTGCACATGCATTCGTCATAATCTTCTTCATAGTTATACCCATCATAATTGGCGGATTCGGCAACTGATTAGTTCCCCTAATAATTGGAGCCCCTGATATAGCATTCCCACGAATAAACAACATAAGCTTTTGACTCCTACCTCCCTCCTTCCTCCTCCTCCTAGCCTCTTCAACAGTAGAAGCAGGAGTAGGAACCGGATGAACAGTATATCCACCACTAGCCGGCAACCTAGCCCATGCCGGAGCTTCAGTAGACCTAGCTATTTTTTCCCTCCATTTAGCAGGTGTTTCCTCCATTTTAGGGGCAATTAACTTCATCACCACTGCAATCAATATAAAACCCCCAGCACTATCACAATACCAAACTCCCTTATTCGTTTGATCCGTTCTTATCACTGCCGTATTACTACTCCTCTCCCTCCCAGTTCTTGCCGCCGGCATTACAATATTACTCACAGATCGTAACCTAAACACAACATTCTTTGACCCAGCCGGAGGTGGAGACCCAATTCTGTACCAACATTTATTCTGATTCTTTGGTCACCCAGAAGT"
+[2] "GGCGCATGAGCTGGAATAATTGGAACCGCCCTCAGCCTCCTTATTCGAGCCGAACTTGGACAACCAGGAACCCTACTAGGAGACGACCAAATTTACAATGTAATTGTTACTGCACATGCATTCATCATAATCTTCTTCATAGTTATACCCATCATAATTGGCGGATTCGGCAACTGATTAGTTCCCCTAATAATTGGAGCCCCTGATATAGCATTCCCACGAATAAACAACATAAGCTTTTGACTCCTACCTCCCTCTTTCCTCCTCCTCCTAGCCTCTTCAACAGTAGAAGCAGGAGTAGGAACCGGATGAACAGTATATCCACCACTAGCCGGCAACCTAGCCCATGCCGGAGCTTCAGTAGACCTAGCTATTTTTTCCCTCCATTTAGCAGGTGTTTCCTCCATTTTAGGGGCAATCAACTTCATCACCACTGCAATCAATATAAAACCCCCAGCACTATCACAATACCAAACTCCCTTATTCGTTTGATCCGTTCTTATCACTGCCGTATTACTACTCCTCTCCCTCCCAGTTCTTGCCGCCGGCATTACAATATTACTCACAGATCGTAACCTAAACACAACATTCTTTGACCCGGCCGGAGGTGGAGACCCAATTCTGTACCAACATTTATTCTGATTCTTTGGTCA"             </code></pre>
+</div>
+</div>
+<p>Notice this comes back as a list. You have the symbol <code>[[1]]</code> in the beginning showing it’s the first element of the list. And then you have two elements in that list (denoted by <code>[1]</code> and <code>[2]</code>), each element being a separate sequence for a separate individual in that species in that island.</p>
+</section>
+<section id="step-4.-alignments" class="level4">
+<h4 class="anchored" data-anchor-id="step-4.-alignments">Step 4. Alignments</h4>
+<p>Our third column (<code>sequence</code>) is now a column where each row has the sequences for a species in a island. We will align these sequences using the package <code>muscle</code>, which is also the name of the <a href="https://doi.org/10.1093/nar/gkh340">alignment algorithm</a>. This package required our sequences to be format as a <code>DNAStringSet</code> object, which is a type of special object from the package <code>Biostrings</code> (a package to handle biological sequence data). So, first, we need to change our sequences into the <code>DNAStringSet</code> format.</p>
+<p>BUT BEFORE THAT… Remember we can only calculate genetic diversity for those species where we have at least two samples per island. That is not the case for all of them. So we need to calculate how many sequences we have per species per island and filter out the ones that have just one. We can that by creating a new column that has the number of sequences for each row. We can use <code>mutate()</code> to create this new column (which we will call <code>n</code>), along with the function <code>length()</code> which will count how many elements I have in the column sequence, for each row.</p>
+<p>Notice that we have to use <code>group_by()</code> again. That is because our table is only grouped by <code>island</code> right now (you can check that by inspecting the table), so if we calculate <code>length()</code> of sequence, it would count all sequences per island. We actually need all sequences per island AND per species.</p>
+<blockquote class="blockquote">
+<p>NOTE: we have to add <code>[[1]]</code> to sequence in the code below. If we don’t, we are counting how many rows we have per island per species. When we add <code>[[1]]</code>, we are accessing the elements (i.e., sequences) inside the list (the <code>[1]</code>,<code>[2]</code>,etc.), and checking how many of those elements we have. Note for future self: make a diagram to help visualize this better.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(island,binomial) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">length</span>(sequence[[<span class="dv">1</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can use <code>filter()</code> to keep only species with more than one sequence per island:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Okay, so far so good (hopefully). We will now transform these sequences into <code>DNAStringSet</code>. The function that does that is simply called <code>DNAStringSet()</code> and is in the package <code>Biostrings</code>, so we need to load that package. We can then use <code>mutate()</code> again: remember it will create a new column <em>or</em> modify an existing column. If we give it a name of a column that exists, it will just modify the column based on its content. We can use <code>mutate()</code> to say that the column <code>sequence</code> now should be the <code>DNAStringSet</code> of whatever is in column sequence.</p>
+<p>A few quirks here: 1) we need to use <code>unlist()</code> to transform the <code>list</code> into a <code>vector</code> when creating the <code>DNAStringSet</code>. This is because the function <code>DNAStringSet()</code> requires a <code>vector</code> of sequences, not a <code>list</code>. This is just handling the types of objects (<code>vector</code> vs <code>list</code>) to match what the function requires. The data itself does not change at all. 2) For the same reason, we need to use <code>list()</code> to create the <code>list</code> again. The function <code>DNAStringSet</code> returns an object of the type <code>DNAStringSet</code> (duh!), but we can’t save that object type directly into a table. So we transform them into a <code>list</code> first, which can be saved into the table. Lists are basically just general types of object that can store pretty much anything, and a very useful to organize complex data into a table</p>
+<p>Note that we use <code>unlist()</code> on the sequence, then we feed that into <code>DNAStringSet()</code>: <code>DNAStringSet(unlist(sequence))</code>…</p>
+<p>… then we wrap the result of all that into the <code>list()</code>: <code>list(DNAStringSet(unlist(sequence)))</code>.</p>
+<blockquote class="blockquote">
+<p>AGAIN a diagram would be awesome.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Biostrings)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(binomial) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sequence =</span> <span class="fu">list</span>(<span class="fu">DNAStringSet</span>(<span class="fu">unlist</span>(sequence))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we call <code>coi_data</code>, we will notice that the objects inside <code>sequence</code> have now changed from the type <code>chr</code> (a character vector) to <code>DNAStrnS</code> (object of type <code>DNAStringSet</code>). Let’s call one of those objects to visualize it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>sequence[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+DNAStringSet object of length 2:
+    width seq
+[1]   666 CTTTGGCGCNTGAGCTGGAATAATTGGAACCGCC...ACATTTATTCTGATTCTTTGGTCACCCAGAAGT
+[2]   653 GGCGCATGAGCTGGAATAATTGGAACCGCCCTCA...TCTGTACCAACATTTATTCTGATTCTTTGGTCA</code></pre>
+</div>
+</div>
+<p>We can see that the content is now formatted following the standards of the package <code>Biostrings</code>: we have the info of the width of each sequence, the sequence itself, and each base has a different color. This is the type of object we need for the alignment. Again, we can perform the alignment on each them with <code>mutate()</code> and the <code>muscle()</code> function from the <code>muscle</code> package. We save it to a different column called <code>aln</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(muscle)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">aln =</span> <span class="fu">list</span>(muscle<span class="sc">::</span><span class="fu">muscle</span>(sequence[[<span class="dv">1</span>]])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A quick check of the <code>aln</code> column shows us the sequences are now aligned:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>aln[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+DNAMultipleAlignment with 2 rows and 666 columns
+     aln
+[1] CTTTGGCGCNTGAGCTGGAATAATTGGAACCGCCCT...CCAACATTTATTCTGATTCTTTGGTCACCCAGAAGT
+[2] ----GGCGCATGAGCTGGAATAATTGGAACCGCCCT...CCAACATTTATTCTGATTCTTTGGTCA---------</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5.-calculating-genetic-diversity" class="level4">
+<h4 class="anchored" data-anchor-id="step-5.-calculating-genetic-diversity">Step 5. Calculating genetic diversity</h4>
+<p>This is our final step (so far…). We are going to use yet another function from another package to calculate the genetic diversity. Specifically, we are calculating the <a href="https://en.wikipedia.org/wiki/Nucleotide_diversity">nucleotide diversity</a>, which can be briefly defined as the average number of nucleotide differences per site between two DNA sequences, across all pairs of sequences in a population. A very handy function in the package <code>pegas</code> calculated this value: <code>nuc.div()</code>. This function requires an object of the type <code>DNABin</code>, a specific type of the package <code>ape</code>, so will use <code>as.DNABin()</code> to transform our <code>DNAStringSet</code> objects into that type before applying <code>nuc.div()</code>.</p>
+<blockquote class="blockquote">
+<p>Note: sorry for all the back and forth between packages and object types. Many popgen packages were created over the years with different data structures and (some) of them have options to convert from one to another. Data formats and converting among them is a curse of population genetics analysis that R has not yet fully solved.</p>
+</blockquote>
+<p>Because <code>nuc.div()</code> returns a numeric value, we don’t need to use <code>list()</code> to save it to the table. Numeric vales can be directly saved to the table in R.</p>
+<p>We call this new column <code>pi</code> because it is the greek letter (<span class="math inline">\(\pi\)</span>) used to represent nucleotide diversity in population genetics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pegas)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="fu">nuc.div</span>(<span class="fu">as.DNAbin</span>(aln[[<span class="dv">1</span>]])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we check our dataset now, we can see that we have a new column called <code>pi</code> with a bunch of numbers. Those are the calculated values for the metric of nucleotide diversity per species per island. This value is the basic input information for all the following analyses we will perform. With this data, we can see how much genetic diversity varies per species and per island and compare that to different datasets. We can, for instance, check if genetic diversity and abundance are correlated, ,or check if ecological traits such as body size and diet explain species abundance and their genetic diversity. We can also investigate how characteristics of the islands (such as area or connectivity) influence the distribution of the genetic diversity in the community.</p>
+</section>
+<section id="step-6.-quick-visualization-of-genetic-diversity-distribution-gdd" class="level4">
+<h4 class="anchored" data-anchor-id="step-6.-quick-visualization-of-genetic-diversity-distribution-gdd">Step 6. Quick visualization of genetic diversity distribution (GDD)</h4>
+<p>Just for fun, let’s finalize with a simple plot of the genetic diversity in each community. For that, we can use the package <code>ggplot</code>, which is part of the packages within <code>tidyverse</code>. All sorts of plots can be done with <code>ggplot</code>: here we will be doing a simple <a href="https://en.wikipedia.org/wiki/Scatter_plot">scatter plot</a> to visualize the distribution of genetic diversity in each community.</p>
+<p>We start by calling the function <code>ggplot()</code> and saying that our data is <code>coi_data</code>. This is the information on <em>WHAT</em> to plot. Then we state that our X axis should be the species name and the Y axis should be the genetic diversity for that species. We set those axes within the function <code>aes()</code> because these axes are information on <em>HOW</em> to map our data to the plot. Now we have to set the <em>geometry</em> that we want to use: do we want to plot points? Or do we want to plot lines? Or bars? In our case, we want a scatter plot, which is simply points, so we can close the function <code>ggplot()</code> and add another function (with a <code>+</code>) that is called <code>geom_point()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coi_data,<span class="fu">aes</span>(<span class="at">x=</span>binomial,<span class="at">y=</span>pi))<span class="sc">+</span><span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aln_gendiv_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that we don’t have a plot per islands. At no moment we told ggplot that we wanted just the values from this island or that island. We could do so by using a function called <code>facet_wrap()</code>. This function will use one of the columns and make different plots, one for each value in that column. We have to tell that function what column we wannt use.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coi_data,<span class="fu">aes</span>(<span class="at">x=</span>binomial,<span class="at">y=</span>pi))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="aln_gendiv_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we have four plots: one per island. This is a nice way to quickly visualize and compare the genetic diversity per island.</p>
+<p>Usually, when plotting distributions such as the <a href="https://www.nature.com/scitable/knowledge/library/explaining-general-patterns-in-species-abundance-and-23162842/">Species Abundance Distribution</a>, we want to sort out the species in a way that we begin with the most abundance species first, on the left of the plot, and go towards the least abundance at the right end of the plot. This is because ranking the species this way gives us an important information about the community: how fast are we going from high abundance to low abundance as we move through the species? Do we have just a couple super abundant species with most species being very rare? Or do we have a more smooth decline, with many species that are fairly abundant, and some others that are somewhat rare? This information on the <strong>relative abundance of species</strong> is important because it hints on the processes that are shaping the community (i.e, shaping what species we have and how many of each we have). If I have a very <em>uneven</em> abundance distribution (few super abundant species dominating and many rare species), it is a sign that species are likely being <em>filtered</em> based on their ecological attributes, which results in few species dominating the community. Or, alternatively, it can suggest a very recent community, where a few species have begun to colonize, have no competitor and are currently dominating the population. It can also hint on an old island that is very far from the mainland, meaning very few species get to reach it. Of course, all those things can be happening simultaneously, and decoupling them based on just looking at patterns can be challenging (which is where <a href="https://www.youtube.com/watch?v=s6RwgGlIop8">process-explicit modeling</a> comes in hand).</p>
+<p>To make this ranked plot, we can use arrange…</p>
+<p>TO BE CONTINUED</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
