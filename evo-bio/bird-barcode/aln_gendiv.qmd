@@ -11,7 +11,7 @@ This document will go through steps by steps on how to import non-aligned sequen
 
 At this point, you should have one or more fasta files exported from Geneious of the amplified COI sequences for the bird samples we'll be working with. The code below will go through reading those sequences into R and organizing them based on the species and locality.
 
-> Note: it is a nice exercise to first load all your fasta files into MEGA and align them to quickly check for any major issues. For instance, if any samples was exported 3' –\> 5', instead of the usual 5' -\> 3', you can quickly notice that and fix it using MEGA. You won't be able to visualize all the alignments in R.
+> Note: it is a nice exercise to first load all your fasta files into MEGA and align them to quickly check for any major issues. For instance, if any samples was exported `3' –> 5'`, instead of the usual `5' -> 3'`, you can quickly notice that and fix it using MEGA. You won't be able to visualize all the alignments in R.
 
 #### Step 1. Importing DNA sequences
 

@@ -1,0 +1,287 @@
+museum,box,loc_box,tissue,island,longitude,latitude,type,code,binomial,Notes,person,next_step,total_dna_amount,extr_date_dna1,dna1_qubit_date,dna_1_ng/µl,dna_1_tot_µl,dna_1_gel,dna_1_gelfile,dna_1_loc,gel_ext_notes,extr_date_dna2,reextr_loc,pcr_date,pcr_date_2,pcr_gelfile,pcr_gelfile_2,loc_in_box,sequence_quality
+lebi,role-field-1,A1,B001,araripe,-39.31042,-7.36641,muscle,RB1,Synallaxis scutata,no band in pcr,Sophia,,3864,2023-10-10,2023-10-17,84,46,2023-10-13,03-05-2024_ext_sh,role-dna-1_A1,band,05-08-2024,reextr_A1,05-09-2024,,,,,
+lebi,role-field-1,B1,B013,araripe,-39.31042,-7.36641,muscle,RB10,Cnemotriccus fuscatus,no band in pcr,Sophia,,15532,2023-10-18,2013-10-20,353,44,2023-10-20,03-05-2024_ext_sh,role-dna-1_A5,no band,05-08-2024,reextr_A6,,,,,,
+lebi,role-field-2,C1,B137,ubajara,-40.89817,-3.83945,,RB100,Synallaxis scutata,,Sophia,sequencing,0,,,,,,,role-dna-1_H9,band,,,,,,,,good sequence. Mathces with blast
+CAHZ,role-loan-1,A1,TCAHZ00001,areia,-35.7455,-6.968616,,RB143,Basileuterus culicivorus,,Crystal,rePCR,0,2024-02-14,,,,,2024-03-04-cp-1,role-dna-2_B8,faint band,,,2024-05-14,,,,,
+lebi,role-field-2,C3,B141,ubajara,-40.89817,-3.83945,,RB102,Pheugopedius genibarbis,,Sophia,sequencing,0,,,,,,,role-dna-1_I1,no band,,,,,,,,good sequence. Matches with blast
+lebi,role-field-2,C4,B142,ubajara,-40.89817,-3.83945,,RB103,Taraba major,,Sophia,sequencing,0,,,,,,,role-dna-1_I2,no band,,,,,,,,good sequence. Matches with blast
+lebi,role-field-2,C5,B146,ubajara,-40.89817,-3.83945,,RB104,Pheugopedius genibarbis,no band on first pcr.,Sophia,sequencing,0,,,,,,,role-dna-1_I3,no band on first gel. ,05-14-2024,reextr_D7,2024-05-16,,,,,
+lebi,role-field-2,C6,B148,ubajara,-40.89817,-3.83945,,RB105,Synallaxis scutata,,Sophia,sequencing,0,,,,,,,role-dna-1_I4,good band,,,,,,,,good sequence. Matches with blast
+lebi,role-field-2,C7,B154,baturite,-38.853856,-4.259417,muscle,RB106,Arremon taciturnus,,Crystal,sequencing,0,2023-11-12,,,,2024-02-27,,role-dna-1_I5,good band,,,04-02-2024,,2024-04-02-cp-sh-2,,PCR-box-1_A12,great. Matches with blast
+lebi,role-field-2,C8,B156,baturite,-38.853856,-4.259417,,RB107,Sclerurus cearensis,,Crystal,sequencing,0,,,,,,,role-dna-1_I6,good band,,,2024-05-14,,,,,
+lebi,role-field-2,C9,B157,baturite,-38.853856,-4.259417,,RB108,Turdus amaurochalinus,,Crystal,sequencing,0,,,,,,,role-dna-1_I7,really good band,,,2024-05-14,,,,,
+lebi,role-field-2,A1,B110,ubajara,-40.89817,-3.83945,,RB82,Turdus leucomelas,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_G5,good band,,,2024-05-17,,,,,
+lebi,role-field-1,B2,B014,araripe,-39.31042,-7.36641,muscle,RB11,Sittasomus griseicapillus,no band in pcr,Sophia,,5016,2023-10-18,2013-10-20,114,44,2023-10-20,03-05-2024_ext_sh,role-dna-1_A6,band,05-08-2024,reextr_A7,,,,,,
+lebi,role-field-2,D2,B160,baturite,-38.853856,-4.259417,muscle,RB110,Sclerurus cearensis,,Crystal,to extract,0,,,,,,,role-dna-1_I9,,,,,,,,,good sequence. Species does not match with blast.
+CAHZ,role-loan-2,A2,TCAHZ01337,ubajara,-40.89817,-3.83945,,RB245,Tolmomyias flaviventris,,Sophia,PCR,0,,,,,,,role-dna-3_A2,faint band,2024-04-03,,,04-05-2024,,,,
+lebi,role-field-2,D4,B163,baturite,-38.853856,-4.259417,,RB112,Lathrotriccus euleri,,Crystal,sequencing,0,2024-04-03,,,,,,role-dna-1_J1,no band,,,2024-05-14,,,,,
+lebi,role-field-2,D5,B169,baturite,-38.853856,-4.259417,muscle,RB113,Arremon taciturnus,,Crystal,sequencing,0,2024-04-03,,,,,,role-dna-1_J2,really good band,,,2024-05-13,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-2,D6,B171,baturite,-38.853856,-4.259417,,RB114,Sclerurus cearensis,,Crystal,sequencing,0,,,,,,,role-dna-1_J3,,,,2024-05-14,,,,,
+lebi,role-field-2,D7,B173,baturite,-38.853856,-4.259417,,RB115,Tolmomyias flaviventris,sample not in box,Crystal,,3486.8,,2023-03-21,75.8,46,,,role-dna-1_J3,,,,,,,,,
+lebi,role-field-2,D8,B174,baturite,-38.853856,-4.259417,muscle,RB116,Dacnis cayana,,Crystal,sequencing,0,2024-04-03,,,,,,role-dna-1_J4,faint band,,,2024-04-29,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-2,A4,B113,ubajara,-40.89817,-3.83945,,RB85,Turdus leucomelas,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_G8,good band,,,2024-05-17,,,,,
+lebi,role-field-2,E1,B176,baturite,-38.853856,-4.259417,,RB118,Conopophaga cearae,,Crystal,sequencing,0,,,,,,,role-dna-1_J6,,,,2024-05-14,,,,,
+lebi,role-field-2,E2,B177,baturite,-38.853856,-4.259417,muscle,RB119,Herpsilochmus atricapillus,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role-dna-1_J7,,,,03-25-2024,,2024-03-26-sh_1-cp_1,,PCR-box-1_C2,great. Matches with blast
+lebi,role-field-1,B3,B015,araripe,-39.31042,-7.36641,muscle,RB12,Cnemotriccus fuscatus,,Sophia,sequencing,20768,2023-10-18,2013-10-20,472,44,2023-10-20,03-05-2024_ext_sh,role-dna-1_A7,band ,05-08-2024,reextr_A8,,,,,,
+lebi,role-field-2,E3,B178,baturite,-38.853856,-4.259417,,RB120,Empidonomus varius,,Crystal,sequencing,0,2024-04-03,,,,,,role_dna_A1,no band,,,2024-05-14,,,,,
+lebi,role-field-2,E4,B182,baturite,-38.853856,-4.259417,muscle,RB121,Stilpnia cayana,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role-dna-1_J8,,,,03-25-2024,,2024-03-26-sh_1-cp_1,,PCR-box-1_C4,great sequence. Only cayana matched with blast.
+lebi,role-field-2,E5,B185,baturite,-38.853856,-4.259417,,RB122,Turdus amaurochalinus,,Crystal,sequencing,0,,,,,,,role-dna-1_J9,,,,2024-05-14,,,,,
+lebi,role-field-2,E6,B186,baturite,-38.853856,-4.259417,,RB123,Dendrocolaptes platyrostris,,Crystal,sequencing,0,,,,,,,role_dna_A2,,,,2024-05-14,,,,,
+lebi,role-field-2,E7,B187,baturite,-38.853856,-4.259417,,RB124,Phyllomyias fasciatus,,Crystal,sequencing,0,,,,,,,role_dna_A3,,,,2024-05-14,,,,,
+lebi,role-field-2,E8,B188,baturite,-38.853856,-4.259417,muscle,RB125,Lathrotriccus euleri,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role_dna_A4,,,,03-25-2024,,2024-03-26-sh_1-cp_1,,PCR-box-1_C5,good sequence. Matches with species.
+lebi,role-field-2,E9,B190,baturite,-38.853856,-4.259417,blood,RB126,Sclerurus cearensis,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role_dna_A5,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,A6,B006,araripe,-39.31042,-7.36641,muscle,RB6,Cnemotriccus fuscatus,no bands in pcr,Sophia,repcr,484,2023-10-18,2013-10-20,11,44,2023-10-20,03-05-2024_ext_sh,rbench_A4,540 ng/ul of dna,04-08-2024,reextr_A5,2024-05-16,,,,,
+lebi,role-field-2,F2,B193,baturite,-38.853856,-4.259417,,RB128,Dacnis cayana,,Crystal,sequencing,0,,,,,,,role_dna_A7,,,,2024-05-14,,,,,
+lebi,role-field-2,F3,B194,baturite,-38.853856,-4.259417,muscle,RB129,Pheugopedius genibarbis,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role_dna_A8,,,,03-26-2024,,2024-03-26-sh_1-cp_1,,PCR-box-1_C6,great sequence. Matches with blast.
+lebi,role-field-1,B4,B016,araripe,-39.31042,-7.36641,muscle,RB13,Sittasomus griseicapillus,,Sophia,sequencing,4708,2023-10-18,2013-10-20,107,44,2023-10-20,03-05-2024_ext_sh,role-dna-1_A8,faint band,05-08-2024,reextr_A9,,,,,,alright sequence. matches with blast
+lebi,role-field-2,F4,B197,baturite,-38.853856,-4.259417,muscle,RB130,Cyanoloxia brissonii,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role_dna_A9,,,,03-25-2024,,2024-03-26-sh_1-cp_1,,PCR-box-1_C8,good sequence. Does not match with balst/
+lebi,role-field-2,F5,B199,baturite,-38.853856,-4.259417,muscle,RB131,Arremon taciturnus,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role_dna_A10,,,,2024-04-02,,2024-04-02-cp-sh,,PCR-box-1_C9,great sequence. Matches with Blast.
+lebi,role-field-2,F6,B200,baturite,-38.853856,-4.259417,muscle,RB132,Arremon taciturnus,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role-dna-2_B1,,,,2024-04-02,,2024-04-02-cp-sh,,PCR-box-1_C10,Great sequence. Matches with Blast.
+lebi,role-field-2,A6,B116,ubajara,-40.89817,-3.83945,,RB87,Turdus leucomelas,,Sophia,rePCR,0,,,,,,03-06-2024_ext_sh,role-dna-1_G9,good band,,,2024-05-17,,,,,
+lebi,role-field-2,F8,B203,baturite,-38.853856,-4.259417,muscle,RB134,Turdus leucomelas,,Crystal,sequencing,0,2023-12-12,,,,2024-02-28,,role-dna-2_B3,,,,2024-04-02,,2024-04-02-cp-sh,,PCR-box-1_C11,some edit in sequence. matches with blast.
+lebi,role-field-1,A7,B007,araripe,-39.31042,-7.36641,muscle,RB7,Thamnophilus pelzelni,,Sophia,reextract,1531.2,2023-10-18,2013-10-20,34.8,44,,03-05-2024_ext_sh,rbench_A5,faint band.,,,,,,,,
+lebi,role-field-2,G1,B206,baturite,-38.853856,-4.259417,,RB136,Basileuterus culicivorus,sample not in box,Crystal,to extract,0,,,,,,,,,,,,,,,,
+lebi,role-field-2,G2,B214,ubajara,-40.89817,-3.83945,,RB137,Sclerurus cearensis,,Sophia,extract,0,,,,,,,,,,,,,,,,
+lebi,role-field-2,G3,B220,ubajara,-40.89817,-3.83945,,RB138,Pheugopedius genibarbis,,Sophia,extract,0,,,,,,,,,,,,,,,,
+lebi,role-field-2,G4,B221,ubajara,-40.89817,-3.83945,,RB139,Basileuterus culicivorus,,Sophia,extract,0,,,,,,,,,,,,,,,,
+lebi,role-field-1,B5,B018,araripe,-39.31042,-7.36641,muscle,RB14,Tolmomyias flaviventris,,Sophia,sequencing,704,2023-10-18,2023-10-20,16,44,,03-05-2024_ext_sh,role-dna-3_C8,band,05-08-2024,reextr_A10,,,,,,good sequence. Matches with blast
+lebi,role-field-2,G5,B226,areia,-35.7455,-6.968616,muscle,RB140,Conopophaga cearae,,Crystal,sequencing,0,2024-04-03,,,,2024-04-12,2024-04-12-cp,role-dna-2_B5,really good band,,,2024-04-29,2024-05-13,2024-04-29-cp,2024-05-13-sh-cp,PCR-box-1_C12,good sequence. Only conopophaga matches.
+lebi,role-field-2,A7,B117,ubajara,-40.89817,-3.83945,,RB88,Arremon taciturnus,,Sophia,rePCR,0,,,,,,03-06-2024_ext_sh,role-dna-1_G10,good band,,,2024-05-17,,,,,
+lebi,role-field-2,G7,B229,areia,-35.7455,-6.968616,,RB142,Tolmomyias flaviventris,,Crystal,PCR,0,2024-04-03,,,,,,role-dna-2_B7,no band,,,,,,,,
+lebi,role-loan-2,A8,1091,baturite,-38.853856,-4.259417,,RB251,Conopophaga cearae,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_A8,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+CAHZ,role-loan-1,A2,TCAHZ00002,areia,-35.7455,-6.968616,,RB144,Neopelma pallescens,,Crystal,sequencing,0,2024-02-14,,,,,2024-03-04-cp-1,role-dna-2_B9,faint band,,,2024-05-14,,,,,
+CAHZ,role-loan-1,A3,TCAHZ00004,areia,-35.7455,-6.968616,,RB145,Leptopogon amaurocephalus,sample not in box,Crystal,re-extract,0,2024-02-14,,,,,2024-03-04-cp-1,,no band,,,,,,,,
+CAHZ,role-loan-1,A4,TCAHZ00005,areia,-35.7455,-6.968616,,RB146,Leptopogon amaurocephalus,,Crystal,sequencing,0,2024-02-14,,,,,2024-03-04-cp-1,role-dna-2_B10,faint band,,,2024-05-14,,,,,good sequence. Matches with blast.
+CAHZ,role-loan-1,A5,TCAHZ00008,areia,-35.7455,-6.968616,,RB147,Turdus leucomelas,sample not in box,Crystal,re-extract,0,2024-02-14,,,,,2024-03-04-cp-1,,no band,,,,,,,,
+CAHZ,role-loan-1,A6,TCAHZ00009,areia,-35.7455,-6.968616,,RB148,Turdus leucomelas,,Crystal,sequencing,0,2024-02-27,,,,,24.03.04-SH_1-CP_2_PUB_340,role-dna-2_C1,faint band,,,2024-05-14,,,,,good sequence. Matches with blast.
+CAHZ,role-loan-1,A7,TCAHZ00010,areia,-35.7455,-6.968616,,RB149,Leptopogon amaurocephalus,,Crystal,sequencing,0,2024-02-27,,,,,24.03.04-SH_1-CP_2_PUB_340,role-dna-2_C2,faint band,,,2024-05-14,,,,,good sequence. Matches with blast.
+CAHZ,role-loan-1,B1,TCAHZ00016,areia,-35.7455,-6.968616,,RB153,Myiothlypis flaveola,,Crystal,rePCR,0,2024-03-05,,,,,2024-03-07-cp-1,role-dna-2_C4,really good band,,,2024-04-02,2024-05-17,2024-04-02-cp-sh,,,
+CAHZ,role-loan-1,A8,TCAHZ00011,areia,-35.7455,-6.968616,,RB150,Xenops minutus,,Crystal,sequencing,0,2024-02-27,,,,,24.03.04-SH_1-CP_2_PUB_340,role-dna-2_C3,faint band,,,2024-05-14,,,,,good sequence. Matches with blast.
+CAHZ,role-loan-1,A9,TCAHZ00012,areia,-35.7455,-6.968616,,RB151,Synallaxis frontalis,sample not in box,Crystal,re-extract,0,2024-02-27,,,,,24.03.04-SH_1-CP_2_PUB_340,,no band,,,,,,,,
+CAHZ,role-loan-1,A10,TCAHZ00015,areia,-35.7455,-6.968616,,RB152,Volatinia jacarina,no tissue left,Crystal,,0,2024-02-27,,,,,24.03.04-SH_1-CP_2_PUB_340,,no band,,,,,,,,
+CAHZ,role-loan-1,B2,TCAHZ00021,areia,-35.7455,-6.968616,,RB154,Basileuterus culicivorus,,Crystal,rePCR,0,2024-03-05,,,,,2024-03-07-cp-1,role-dna-2_C5,really good band,,,2024-04-02,2024-05-17,2024-04-02-cp-sh,,,
+CAHZ,role-loan-1,B3,TCAHZ00023,areia,-35.7455,-6.968616,,RB155,Tolmomyias flaviventris,,Crystal,rePCR,878.6,2024-03-05,2023-03-21,19.1,46,,2024-03-07-cp-1,role-dna-2_C6,really good band,,,2024-04-02,,2024-04-02-cp-sh,,,
+CAHZ,role-loan-1,B4,TCAHZ00025,areia,-35.7455,-6.968616,,RB156,Xenops minutus,,Crystal,rePCR,0,2024-03-05,,,,,2024-03-07-cp-1,role-dna-2_C7,really good band,,,2024-04-02,2024-05-17,2024-04-02-cp-sh,,,
+lebi,role-loan-2,B4,1144,ubajara,-40.89817,-3.83945,,RB256,Sclerurus cearensis,,Sophia,PCR,0,2024-04-03,,,,,,role-dna-3_B3,band,,,,,,,,
+CAHZ,role-loan-1,B5,TCAHZ00026,areia,-35.7455,-6.968616,,RB157,Vireo olivaceus,,Crystal,rePCR,0,2024-03-05,,,,,2024-03-07-cp-1,role-dna-2_C8,really good band,,,2024-04-02,2024-05-17,2024-04-02-cp-sh,,,
+CAHZ,role-loan-1,B6,TCAHZ00037,areia,-35.7455,-6.968616,muscle,RB158,Turdus leucomelas,,Crystal,sequencing,0,2024-03-05,,,,2024-03-07,2024-03-07-cp-1,role-dna-2_C9,band,,,2024-04-02,,2024-04-02-cp-sh-2,,PCR-box-1_D1,great sequence. Matches with blast.
+CAHZ,role-loan-1,B7,TCAHZ00038,areia,-35.7455,-6.968616,muscle,RB159,Basileuterus culicivorus,,Crystal,sequencing,0,2024-03-05,,,,2024-03-07,2024-03-07-cp-1,role-dna-2_C10,band,,,2024-04-02,,2024-04-02-cp-sh-2,,PCR-box-1_D2,Low quality sequence. matches with blast.
+lebi,role-field-1,B7,B020,araripe,-39.31042,-7.36641,muscle,RB16,Myiothlypis flaveola,,Sophia,sequencing,0,2023-10-23,2023-10-25,,,2023-10-25,,role-dna-1_A10,,,,2024-03-27,,2024-03-27,,,
+CAHZ,role-loan-1,B8,TCAHZ00041,areia,-35.7455,-6.968616,,RB160,Tolmomyias flaviventris,,Crystal,re-extract,0,,,,,,,,no band,,,,,,,,
+CAHZ,role-loan-1,B9,TCAHZ00042,areia,-35.7455,-6.968616,muscle,RB161,Neopelma pallescens,,Crystal,sequencing,0,2024-03-05,,,,2024-03-07,2024-03-07-cp-1,role-dna-2_D1,band,,,2024-04-02,,2024-04-02-cp-sh-2,,PCR-box-1_D3,very low quality seuquencel matches with blast.
+CAHZ,role-loan-1,B10,TCAHZ00045,areia,-35.7455,-6.968616,,RB162,Neopelma pallescens,,Crystal,re-extract,0,,,,,,,,no band,,,,,,,,
+CAHZ,role-loan-1,C1,TCAHZ00048,areia,-35.7455,-6.968616,,RB163,Neopelma pallescens,,Crystal,PCR,0,2024-03-05,,,,,2024-03-07-cp-1,role-dna-2_D2,band,,,2024-04-02,,2024-04-02-cp-sh-2,,,
+CAHZ,role-loan-1,C2,TCAHZ00049,areia,-35.7455,-6.968616,,RB164,Basileuterus culicivorus,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D3,really good band,,,2024-04-02,,2024-04-02-cp-sh-2,,,
+CAHZ,role-loan-1,C3,TCAHZ00054,areia,-35.7455,-6.968616,,RB165,Legatus leucophaius,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D4,faint band,,,,,,,,
+CAHZ,role-loan-1,C4,TCAHZ00056,areia,-35.7455,-6.968616,,RB166,Basileuterus culicivorus,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D5,band,,,2024-04-02,,2024-04-02-cp-sh-2,,,
+CAHZ,role-loan-1,C5,TCAHZ00057,areia,-35.7455,-6.968616,,RB167,Formicivora grisea,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D6,no band,,,,,,,,
+CAHZ,role-loan-1,C6,TCAHZ00058,areia,-35.7455,-6.968616,,RB168,Pyriglena pernambucensis,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D7,really good band,,,2024-04-02,,2024-04-02-cp-sh-2,,,good sequence. Pyriglena leuconota.
+CAHZ,role-loan-1,C7,TCAHZ00059,areia,-35.7455,-6.968616,,RB169,Synallaxis scutata,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D8,faint band,,,,,,,,good sequence. Matches with blast.
+lebi,role-field-1,B8,B021,araripe,-39.31042,-7.36641,muscle,RB17,Myiothlypis flaveola,,Sophia,sequencing,0,2023-10-23,2023-10-25,,,2023-10-25,,role-dna-1_B1,,,,2024-03-27,,2024-03-27,,,relatively good. species does not match with blast options. 
+CAHZ,role-loan-1,C8,TCAHZ00060,areia,-35.7455,-6.968616,,RB170,Synallaxis scutata,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D9,no band,,,,,,,,good sequence. Matches with blast.
+CAHZ,role-loan-1,C9,TCAHZ00061,areia,-35.7455,-6.968616,,RB171,Synallaxis scutata,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_D10,no band,,,,,,,,good sequence. Matches with blast.
+CAHZ,role-loan-1,C10,TCAHZ00062,areia,-35.7455,-6.968616,,RB172,Neopelma pallescens,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_E1,no band,,,,,,,,
+CAHZ,role-loan-1,D1,TCAHZ00063,areia,-35.7455,-6.968616,,RB173,Formicivora grisea,,Crystal,re-extract,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,-,no band,,,,,,,,
+CAHZ,role-loan-1,D2,TCAHZ00068,areia,-35.7455,-6.968616,,RB174,Basileuterus culicivorus,,Crystal,PCR,0,2024-03-11,,,,,2024-03-14-cp-1-mg-1,role-dna-2_E2,faint band,,,,,,,,good sequence; Basileuterus hypoleucus
+CAHZ,role-loan-1,D3,TCAHZ00069,areia,-35.7455,-6.968616,,RB175,Basileuterus culicivorus,,Crystal,PCR,0,2024-04-03,,,,,,role-dna-2_E3,no band,,,,,,,,
+CAHZ,role-loan-1,D4,TCAHZ00070,areia,-35.7455,-6.968616,,RB176,Basileuterus culicivorus,,Crystal,PCR,0,2024-04-03,,,,,,role-dna-2_E4,no band,,,,,,,,
+CAHZ,role-loan-1,D5,TCAHZ00071,areia,-35.7455,-6.968616,,RB177,Basileuterus culicivorus,,Crystal,PCR,0,2024-04-03,,,,,,role-dna-2_E5,no band,,,,,,,,
+CAHZ,role-loan-1,D6,TCAHZ00072,areia,-35.7455,-6.968616,,RB178,Basileuterus culicivorus,,Crystal,PCR,0,2024-04-03,,,,,,role-dna-2_E6,no band,,,,,,,,
+CAHZ,role-loan-1,D7,TCAHZ00074,areia,-35.7455,-6.968616,,RB179,Conopophaga cearae,,Crystal,PCR,0,2024-04-03,,,,,,role-dna-2_E7,no band,,,,,,,,conopophaga aurita
+lebi,role-field-1,B6,B019,araripe,-39.31042,-7.36641,,RB15,Tolmomyias flaviventris,,Sophia,reextract,1002.8,,2023-03-21,21.8,46,2023-10-20,03-05-2024_ext_sh,role-dna-1_A9,no band,05-08-2024,,,,,,,
+CAHZ,role-loan-1,D8,TCAHZ00077,areia,-35.7455,-6.968616,muscle,RB180,Pyriglena pernambucensis,,Crystal,sequencing,0,2024-04-03,,,,2024-04-12,2024-04-12-cp,role-dna-2_E8,faint band,,,2024-04-29,2024-05-13,2024-04-29-cp,2024-05-13-sh-cp,PCR-box-1_D5,good sequence. Blast pyriglena leuconota. 
+CAHZ,role-loan-1,D9,TCAHZ00078,areia,-35.7455,-6.968616,muscle,RB181,Turdus leucomelas,,Crystal,sequencing,0,2024-04-03,,,,,,role-dna-2_E9,faint band,,,2024-04-29,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,D10,TCAHZ00079,areia,-35.7455,-6.968616,muscle,RB182,Turdus leucomelas,,Crystal,sequencing,0,2024-04-03,,,,2024-04-12,2024-04-12-cp,role-dna-2_E10,faint band,,,2024-04-29,2024-05-13,2024-04-29-cp,2024-05-13-sh-cp,PCR-box-1_D6,good sequence. matches with blast.
+lebi,role-field-2,B6,B129,ubajara,-40.89817,-3.83945,,RB96,Dendrocolaptes platyrostris,,Sophia,sequence probation,0,11-29-2023,,,,,24-03-06_ext_SH,role-dna-2-G10,good band,04-08-2024,reextr_D5,04-05-2024,04-17-2024,,,,good sequence. matches with blast.
+CAHZ,role-loan-1,E2,TCAHZ00083,areia,-35.7455,-6.968616,muscle,RB184,Pyriglena pernambucensis,,Crystal,sequencing,0,2024-04-08,,,,,,role-dna-2_F2,really good band,,,,2024-05-13,,2024-05-13-sh-cp,,"good sequence. does not match with blast ""Pyriglena leuconota"""
+lebi,role-field-1,B9,B023,araripe,-39.31042,-7.36641,,RB18,Pachyramphus polychopterus,,Sophia,reextract,0,,,,,,03-05-2024_ext_sh,role-dna-1_B2,no band,05-08-2024,reextr_B1,,,,,,
+CAHZ,role-loan-1,E4,TCAHZ00089,areia,-35.7455,-6.968616,muscle,RB186,Pyriglena pernambucensis,,Crystal,sequencing,0,2024-04-08,,,,2024-04-12,2024-04-12-cp,role-dna-2_F4,band,,,04-16-2024,,2024-04-16-sh-cp,,PCR-box-1_D7,good sequence. Blast pyriglena leuconota.
+CAHZ,role-loan-1,E5,TCAHZ00090,areia,-35.7455,-6.968616,muscle,RB187,Formicivora grisea,,Crystal,sequencing,0,2024-04-08,,,,,,role-dna-2_F5,band,,,,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,E6,TCAHZ00092,areia,-35.7455,-6.968616,muscle,RB188,Stilpnia cayana,,Crystal,sequencing,0,2024-04-08,,,,,,role-dna-2_F6,band,,,,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,E7,TCAHZ00093,areia,-35.7455,-6.968616,muscle,RB189,Leptopogon amaurocephalus,,Crystal,sequencing,0,2024-04-08,,,,,,role-dna-2_F7,band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,C1,B024,araripe,-39.31042,-7.36641,,RB19,Myiothlypis flaveola,,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_B3,,,,,,,,,"good sequence. does not match with blast ""Basileuterus flaveolus"""
+CAHZ,role-loan-1,E8,TCAHZ00094,areia,-35.7455,-6.968616,muscle,RB190,Xenops minutus,,Crystal,sequencing,0,2024-04-08,,,,,,role-dna-2_F8,really good band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-2,C2,B140,ubajara,-40.89817,-3.83945,,RB101,Turdus leucomelas,no band on pcr,Sophia,reextract,0,,,,,,,role-dna-1_H10,,,,2024-05-17,,,,,
+MHNCE,role-loan-2,C2,322,baturite,-38.853856,-4.259417,,RB263,Thraupis palmarum,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_B7,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+CAHZ,role-loan-1,F1,TCAHZ00097,areia,-35.7455,-6.968616,muscle,RB193,Synallaxis scutata,,Crystal,sequencing,0,2024-04-08,,,,,,role-dna-2_G1,really good band,,,,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,F2,TCAHZ00098,areia,-35.7455,-6.968616,muscle,RB194,Neopelma pallescens,,Crystal,sequencing,0,2024-04-08,,,,2024-04-12,2024-04-12-cp,role-dna-2_G2,really good band,,,2024-04-29,,2024-04-29-cp,,PCR-box-1_D8,good sequence. Matches with blast.
+CAHZ,role-loan-1,F3,TCAHZ00100,areia,-35.7455,-6.968616,,RB195,Arundinicola leucocephala,,Crystal,re-extract,0,2024-04-08,,,,,,role-dna-2_G3,no band,,,,,,,,
+CAHZ,role-loan-1,F4,TCAHZ00103,areia,-35.7455,-6.968616,muscle,RB196,Synallaxis scutata,,Crystal,sequencing,0,2024-04-08,,,,2024-04-12,2024-04-12-cp,role-dna-2_G4,really good band,,,2024-04-29,,2024-04-29-cp,,PCR-box-1_D9,good sequence. Matches with blast.
+CAHZ,role-loan-1,F5,TCAHZ00106,areia,-35.7455,-6.968616,muscle,RB197,Herpsilochmus atricapillus,,Crystal,sequencing,0,2024-04-08,,,,2024-04-12,2024-04-12-cp,role-dna-2_G5,really good band,,,2024-04-29,,2024-04-29-cp,,PCR-box-1_D10,good sequence. first name matches with blast.
+CAHZ,role-loan-1,F6,TCAHZ00939,areia,-35.7455,-6.968616,,RB198,Tangara palmarum,,Crystal,sequencing,402,2024-05-14,,,,,,role-dna-2_G6,qubit,,,2024-05-14,,,,,good sequence. thraupis palmarum. 
+MHNCE,role-loan-2,C4,417,baturite,-38.853856,-4.259417,,RB265,Dendroplex picus,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_B9,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+lebi,role-field-1,A2,B002,araripe,-39.31042,-7.36641,muscle,RB2,Cnemotriccus fuscatus,no band in pcr,Sophia,rePCR,837.2,2023-10-10,2023-10-17,18.2,46,,03-05-2024_ext_sh,role-dna-3_C1,band,05-08-2024,reextr_A2,,,,,,
+lebi,role-field-1,C2,B026,araripe,-39.31042,-7.36641,muscle,RB20,Synallaxis scutata,,Sophia,sequencing,0,,,,,,,role-dna-2_F10,,2024-04-03,reextr_B2,2024-04-29,04-05-2024,,,,good. Match with blast
+MHNCE,role-loan-2,C5,425,baturite,-38.853856,-4.259417,,RB266,Arremon taciturnus,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_B10,fragmented,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+CAHZ,role-loan-1,F9,TCAHZ00944,areia,-35.7455,-6.968616,,RB201,Formicivora grisea,,Crystal,sequencing,441,2024-05-14,,,,,,role-dna-2_G9,qubit,,,2024-05-14,,,,,good sequence. matches with blast
+CAHZ,role-loan-1,F10,TCAHZ00949,areia,-35.7455,-6.968616,,RB202,Turdus leucomelas,,Crystal,sequencing,490,2024-05-14,,,,,,role-dna-2_G10,qubit,,,2024-05-14,,,,,good sequence. matches with blast
+CAHZ,role-loan-1,G1,TCAHZ00950,areia,-35.7455,-6.968616,,RB203,Turdus leucomelas,,Crystal,sequencing,600,2024-05-14,,,,,,role-dna-3_H1,qubit,,,2024-05-14,,,,,
+MHNCE,role-loan-2,C6,428,baturite,-38.853856,-4.259417,muscle,RB267,Basileuterus culicivorus,multiple bands,Crystal,rePCR,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_C1,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,G3,TCAHZ00966,areia,-35.7455,-6.968616,,RB205,Neopelma pallescens,,Crystal,re-extract,5.2,2024-05-14,,,,,,,qubit,,,,,,,,
+lebi,role-field-1,C7,B031,araripe,-39.31042,-7.36641,,RB25,Herpsilochmus atricapillus,three pcrs have been done,Sophia,rePCR,0,,,,,,03-05-2024_ext_sh,role-dna-1_B6,band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,C9,B033,araripe,-39.31042,-7.36641,,RB27,Lathrotriccus euleri,,Sophia,reextract,0,,,,,,03-05-2024_ext_sh,role-dna-1_B8,14.6ng/ul of dna,05-08-2024,didn't work.,,,,,,
+MHNCE,role-loan-2,C9,448,baturite,-38.853856,-4.259417,,RB270,Turdus rufiventris,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C4,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+lebi,role-field-1,C3,B027,araripe,-39.31042,-7.36641,muscle,RB21,Cnemotriccus fuscatus,3 extractions were made.,Sophia,sequencing,0,,,,,,,role-dna-3_C2,,2024-04-03,reextr_B3/B4,2024-04-29,04-05-2024,,,,
+lebi,role-field-1,C4,B028,araripe,-39.31042,-7.36641,,RB22,Herpsilochmus atricapillus,three pcrs have been done ( verify on journal to make sure),Sophia,Sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_B4,,,,,2024-05-13,,2024-05-13-sh-cp,,good sequence. Matches with blast second result
+CAHZ,role-loan-1,I6,TCAHZ01291,ubajara,-40.89817,-3.83945,,RB229,Lathrotriccus euleri,,Sophia,sequencing,0,,,,,,,role-dna-2_I6,,,,,,,,,good sequence. Matches with blast
+lebi,role-field-1,C5,B029,araripe,-39.31042,-7.36641,muscle,RB23,Myiothlypis flaveola,,Sophia,sequencing,0,,,,,,,role-dna-2-G2,,2024-04-03,reextr_B5,2024-04-29,04-05-2024,,,,not that great. reverse primer was good fp was not. does not match with blast species.
+CAHZ,role-loan-1,I8,TCAHZ01303,ubajara,-40.89817,-3.83945,,RB231,Synallaxis scutata,,Sophia,sequencing,0,,,,,,,role-dna-2_I8,,,,,,,,,good sequence. Matches with blast
+lebi,role-field-2,D1,B159,baturite,-38.853856,-4.259417,,RB109,Turdus amaurochalinus,,Crystal,rePCR,0,,,,,,,role-dna-1_I8,,,,,,,,,good sequence. Matches with blast.
+lebi,role-field-1,D1,B034,araripe,-39.31042,-7.36641,,RB28,Thamnophilus pelzelni,,Sophia,to be determine,0,,,,,,,rbench_B1,faint band,2024-04-03,reextr_B6,,04-05-2024,,,,
+CAHZ,role-loan-1,H2,TCAHZ00982,areia,-35.7455,-6.968616,muscle,RB215,Pheugopedius genibarbis,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-2_I2,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_F2,good sequence. Matches with blast mitochondrion complete genome
+lebi,role-field-2,D3,B162,baturite,-38.853856,-4.259417,,RB111,Chamaeza campanisona,,Crystal,rePCR,0,,,,,,,role-dna-1_I10,,,,2024-05-14,,,,,
+MHNCE,role-loan-2,D3,451,baturite,-38.853856,-4.259417,,RB273,Turdus leucomelas,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C7,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+CAHZ,role-loan-1,H5,TCAHZ00988,areia,-35.7455,-6.968616,,RB218,Neopelma pallescens,,Crystal,to extract,0,,,,,,,role-dna-2_I5,,,,,,,,,
+CAHZ,role-loan-1,H6,TCAHZ00989,areia,-35.7455,-6.968616,,RB219,Neopelma pallescens,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,I9,TCAHZ01304,ubajara,-40.89817,-3.83945,,RB232,Synallaxis scutata,,Sophia,sequencing,0,,,,,,,role-dna-2_I9,,,,,,,,,good sequence. Matches with blast
+CAHZ,role-loan-1,H7,TCAHZ00990,areia,-35.7455,-6.968616,,RB220,Elaenia flavogaster,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,H8,TCAHZ00991,areia,-35.7455,-6.968616,,RB221,Tolmomyias flaviventris,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,H9,TCAHZ00992,areia,-35.7455,-6.968616,,RB222,Tolmomyias flaviventris,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,H10,TCAHZ00993,areia,-35.7455,-6.968616,muscle,RB223,Stilpnia cayana,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-2_I5,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_F3,"good sequence. does not match with blast ""Tangara cayana"""
+CAHZ,role-loan-1,I1,TCAHZ00996,areia,-35.7455,-6.968616,,RB224,Hemitriccus margaritaceiventer,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,I2,TCAHZ00998,areia,-35.7455,-6.968616,,RB225,Volatinia jacarina,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,I3,TCAHZ00999,areia,-35.7455,-6.968616,,RB226,Formicivora grisea,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,I4,TCAHZ01000,areia,-35.7455,-6.968616,,RB227,Dendroplex picus,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,I5,TCAHZ01003,areia,-35.7455,-6.968616,,RB228,Manacus manacus,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+CAHZ,role-loan-1,J1,TCAHZ01309,ubajara,-40.89817,-3.83945,,RB234,Dendrocolaptes platyrostris,,Sophia,sequencing,0,,,,,,,role-dna-3_J1,,,,,,,,,good sequence. Matches with blast
+CAHZ,role-loan-1,J2,TCAHZ01314,ubajara,-40.89817,-3.83945,,RB235,Formicivora grisea,,Sophia,sequencing,0,,,,,,,role-dna-3_J2,,,,,,,,,
+lebi,role-field-1,D3,B036,araripe,-39.31042,-7.36641,,RB30,Sclerurus cearensis,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_B10,good band,,,,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,J3,TCAHZ01315,ubajara,-40.89817,-3.83945,,RB236,Formicivora grisea,,Sophia,sequencing,0,,,,,,,role-dna-3_J3,,,,,,,,,good sequence. Matches with blast
+CAHZ,role-loan-1,J4,TCAHZ01328,ubajara,-40.89817,-3.83945,,RB237,Dendroplex picus,,Sophia,sequencing,0,,,,,,,role-dna-3_J4,,,,,,,,,"good sequence. does not match with blast ""Dendroplex picus"""
+MHNCE,role-loan-2,D4,452,baturite,-38.853856,-4.259417,muscle,RB274,Basileuterus culicivorus,multiple bands,Crystal,rePCR,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_C8,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,J5,TCAHZ01329,ubajara,-40.89817,-3.83945,,RB238,Sittasomus griseicapillus,,Sophia,sequencing,0,,,,,,,role-dna-3_J5,,,,,,,,,good sequence. Matches with blast
+CAHZ,role-loan-1,J6,TCAHZ01330,ubajara,-40.89817,-3.83945,,RB239,Thamnophilus pelzelni,,Sophia,sequencing,0,,,,,,,role-dna-3_J6,,,,,,,,,
+lebi,role-field-1,C6,B030,araripe,-39.31042,-7.36641,,RB24,Herpsilochmus atricapillus,three pcrs have been done,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_B5,,,,,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,J9,TCAHZ01334,ubajara,-40.89817,-3.83945,muscle,RB242,Thamnophilus pelzelni,,Sophia,sequencing,0,,,,,,,role-dna-3_J9,,2024-04-03,,2024-04-29,04-05-2024,2024-04-29-cp,,,good sequence. matches with blast.
+CAHZ,role-loan-1,J10,TCAHZ01335,ubajara,-40.89817,-3.83945,muscle,RB243,Turdus rufiventris,,Sophia,sequencing,0,,,,,,,role-dna-3_J10,,2024-04-03,,2024-04-29,04-05-2024,2024-04-29-cp,,,good sequence. matches with blast.
+CAHZ,role-loan-2,A1,TCAHZ01336,ubajara,-40.89817,-3.83945,muscle,RB244,Myiodynastes maculatus,,Sophia,sequencing,0,,,,,,,role-dna-3_A1,,2024-04-03,,2024-04-29,04-05-2024,,,,good sequence. Matches with blast
+CAHZ,role-loan-2,A3,TCAHZ01338,ubajara,-40.89817,-3.83945,muscle,RB246,Dendroplex picus,,Sophia,sequencing,0,,,,,,,role-dna-3_A3,,2024-04-03,,2024-04-29,04-05-2024,,,,"good sequence. does not match with blast ""Dendroplex picus"""
+CAHZ,role-loan-1,J7,TCAHZ01332,ubajara,-40.89817,-3.83945,,RB240,Basileuterus culicivorus,,Sophia,to be determined.,0,,,,,,,role-dna-3_J7,fragmentated band,2024-04-03,,,04-05-2024,,,,
+MHNCE,role-loan-2,D5,453,baturite,-38.853856,-4.259417,,RB275,Turdus rufiventris,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C9,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+lebi,role-loan-2,B5,1148,ubajara,-40.89817,-3.83945,muscle,RB257,Sclerurus cearensis,,Sophia,sequencing,0,2024-04-03,,,,,,role-dna-3_B4,,,,2024-04-29,04-05-2024,,,,good sequence. Matches with blast
+lebi,role-field-1,C8,B032,araripe,-39.31042,-7.36641,,RB26,Herpsilochmus atricapillus,,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_B7,,,,,,,,,good sequence. Matches with blast second result
+MHNCE,role-loan-2,E2,616,araripe,-39.31042,-7.36641,muscle,RB281,Antilophia bokermanii,,Sophia,sequencing,0,,,,,,,role-dna-3_D5,,2024-04-03,,2024-04-29,04-05-2024,,,,
+MHNCE,role-loan-2,D6,457,baturite,-38.853856,-4.259417,,RB276,Arremon taciturnus,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C10,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+lebi,role-field-1,D2,B035,araripe,-39.31042,-7.36641,,RB29,Synallaxis scutata,three pcrs have been done,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_B9,,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-loan-2,A4,1076,baturite,-38.853856,-4.259417,,RB247,Turdus leucomelas,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_A4,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_G4,good sequence. Matches with blast
+lebi,role-loan-2,A5,1088,baturite,-38.853856,-4.259417,muscle,RB248,Sclerurus cearensis,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_A5,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_G5,"good sequence. does not match with blast ""Sclerurus caudacutus"" "
+lebi,role-loan-2,A6,1089,baturite,-38.853856,-4.259417,,RB249,Conopophaga cearae,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_A6,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_G6,"good sequence. does not match with blast ""Conopophaga lineata"" and ""Conopophaga aurita"""
+lebi,role-field-1,D6,B039,araripe,-39.31042,-7.36641,,RB33,Neopelma pallescens,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_C2,great band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-loan-2,A7,1090,baturite,-38.853856,-4.259417,muscle,RB250,Sclerurus cearensis,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_A7,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_G7,good sequence. Matches with blast
+lebi,role-field-1,D7,B040,araripe,-39.31042,-7.36641,,RB34,Neopelma pallescens,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_C3,great band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-loan-2,A9,1092,baturite,-38.853856,-4.259417,,RB252,Conopophaga cearae,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_A9,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_G8,"good sequence. does not match with blast ""Conopophaga lineata"" and ""Conopophaga aurita"""
+lebi,role-loan-2,B1,1093,baturite,-38.853856,-4.259417,,RB253,Conopophaga cearae,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_A10,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_G9,"good sequence. does not match with blast ""Conopophaga lineata"" and ""Conopophaga aurita"""
+lebi,role-loan-2,B2,1094,baturite,-38.853856,-4.259417,muscle,RB254,Sclerurus cearensis,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_B1,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_G10,"good sequence. does not match with blast ""Sclerurus caudacutus"" "
+lebi,role-loan-2,B3,1096,baturite,-38.853856,-4.259417,muscle,RB255,Sclerurus cearensis,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_B2,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_G11,"good sequence. does not match with blast ""Sclerurus caudacutus"" "
+MHNCE,role-loan-2,D8,460,baturite,-38.853856,-4.259417,muscle,RB278,Myiarchus ferox,,Crystal,rePCR,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_D2,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,D4,B037,araripe,-39.31042,-7.36641,muscle,RB31,Neopelma pallescens,,Sophia,sequencing,0,,,,,,,role-dna-2-G3, good band on reextr,2024-04-03,reextr_B7,2024-04-29,04-05-2024,,,,not good.
+lebi,role-loan-2,B6,1346,areia,-35.7455,-6.968616,muscle,RB258,Conopophaga cearae,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_B5,faint band,,,2024-05-09,,2024-05-10-cp,,PCR-box-1_H1,"good sequence. does not match with blast ""Conopophaga lineata"" and ""Conopophaga aurita"""
+lebi,role-loan-2,B7,1347,areia,-35.7455,-6.968616,muscle,RB259,Conopophaga cearae,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_B6,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,A4,B004,araripe,-39.31042,-7.36641,muscle,RB4,Cnemotriccus fuscatus,No more sample left. ,Sophia,sequencing,777.4,2023-10-10,2023-10-17,16.9,46,2023-10-13,03-05-2024_ext_sh,rbench_A2,faint band,05-08-2024,reextr_A4,2024-05-16,,,,,
+lebi,role-loan-2,B8,1348,areia,-35.7455,-6.968616,,RB260,Conopophaga cearae,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+lebi,role-loan-2,B9,1349,areia,-35.7455,-6.968616,,RB261,Conopophaga cearae,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+lebi,role-loan-2,C1,1350,areia,-35.7455,-6.968616,,RB262,Conopophaga cearae,,Crystal,to extract,0,,,,,,,,,,,,,,,,
+lebi,role-field-1,D8,B044,araripe,-39.31042,-7.36641,,RB35,Neopelma pallescens,3 re-extractions no sample left no band in pcr,Sophia,new PCR protocol,0,04-08-2024,,,,04-12-2024,,role-dna-2-C4,good band,04-08-2024,reextr_B8/B9,,04-05-2024,,,,
+MHNCE,role-loan-2,C3,352,baturite,-38.853856,-4.259417,,RB264,Turdus rufiventris,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_B8,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H2,good sequence. Matches with blast
+lebi,role-field-2,D9,B175,baturite,-38.853856,-4.259417,,RB117,Sclerurus cearensis,,Crystal,rePCR,0,,,,,,,role-dna-1_J5,,,,2024-05-14,,,,,
+MHNCE,role-loan-2,D9,461,baturite,-38.853856,-4.259417,muscle,RB279,Myiarchus ferox,,Crystal,rePCR,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_D3,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,D9,B045,araripe,-39.31042,-7.36641,,RB36,Neopelma pallescens,three pcrs have been done,Sophia,multiple bands,0,,,,,,03-05-2024_ext_sh,role-dna-1_C4,,,,,2024-05-13,,2024-05-13-sh-cp,,
+MHNCE,role-loan-2,C7,429,baturite,-38.853856,-4.259417,,RB268,Tolmomyias flaviventris,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C2,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H3,
+MHNCE,role-loan-2,C8,432,baturite,-38.853856,-4.259417,,RB269,Arremon taciturnus,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C3,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H4,good sequence. Matches with blast
+CAHZ,role-loan-1,E1,TCAHZ00080,areia,-35.7455,-6.968616,muscle,RB183,Turdus leucomelas,"2 PCRs have been done, no band on the second",Crystal,rePCR,0,2024-04-08,,,,,,role-dna-2_F1,really good band,,,,2024-05-13,,2024-05-13-sh-cp,,good sequence. Matches with blast
+CAHZ,role-loan-1,E10,TCAHZ00096,areia,-35.7455,-6.968616,muscle,RB192,Synallaxis scutata,"2 PCRs have been done, no band on the second",Crystal,rePCR,0,2024-04-08,,,,,,role-dna-2_F10,really good band,,,,2024-05-13,,2024-05-13-sh-cp,,really good sequence. Matches with blast
+MHNCE,role-loan-2,D1,449,baturite,-38.853856,-4.259417,,RB271,Turdus rufiventris,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C5,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H5,
+MHNCE,role-loan-2,D2,450,baturite,-38.853856,-4.259417,,RB272,Thraupis palmarum,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_C6,band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H6,
+lebi,role-field-1,E2,B048,araripe,-39.31042,-7.36641,,RB38,Sittasomus griseicapillus,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_C6,great band,,,,2024-05-13,,2024-05-13-sh-cp,,
+CAHZ,role-loan-1,E3,TCAHZ00085,areia,-35.7455,-6.968616,muscle,RB185,Basileuterus culicivorus,"2 PCRs have been done, no band on the second",Crystal,rePCR,0,2024-04-08,,,,,,role-dna-2_F3,band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,E3,B049,araripe,-39.31042,-7.36641,,RB39,Sclerurus cearensis,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_C7,great band,,,,2024-05-13,,2024-05-13-sh-cp,,
+MHNCE,role-loan-2,E4,632,baturite,-38.853856,-4.259417,,RB283,Thraupis palmarum,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_D7,fragmented,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+MHNCE,role-loan-2,D7,459,baturite,-38.853856,-4.259417,muscle,RB277,Turdus rufiventris,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_D1,faint band,,,2024-05-10,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,E5,B051,araripe,-39.31042,-7.36641,,RB41,Myiothlypis flaveola,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_C8,,,,,2024-05-13,,2024-05-13-sh-cp,,
+MHNCE,role-loan-2,E6,703,baturite,-38.853856,-4.259417,,RB285,Volatinia jacarina,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_D9,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+lebi,role-field-1,E6,B053,araripe,-39.31042,-7.36641,,RB42,Turdus leucomelas,more than one band in pcr,Sophia,to be determined,0,,,,,,03-05-2024_ext_sh,role-dna-1_C9,great band,,,,,,,,
+MHNCE,role-loan-2,E1,462,baturite,-38.853856,-4.259417,muscle,RB280,Tolmomyias flaviventris,,Crystal,sequencing,0,2024-04-29,,,,,2024-05-08-cp,role-dna-3_D4,faint band,,,2024-05-10,,,,,good sequence. Matches with blast
+lebi,role-field-1,E7,B054,araripe,-39.31042,-7.36641,,RB43,Sclerurus cearensis,,Sophia,sequencing,0,04-08-2024,,,,04-12-2024,,role-dna-1_J10,faint nothing,05-08-2024,reextr_C1,2024-05-16,,,,,
+MHNCE,role-loan-2,E3,631,baturite,-38.853856,-4.259417,,RB282,Turdus leucomelas,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_D6,fragmented,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H8,good sequence. Matches with blast
+MHNCE,role-loan-2,E7,713,baturite,-38.853856,-4.259417,,RB286,Troglodytes musculus,,Crystal,rePCR,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_D10,faint band,,,2024-05-09,,2024-05-10-SH_2-CP_2,,,
+MHNCE,role-loan-2,E5,684,baturite,-38.853856,-4.259417,,RB284,Dendrocolaptes platyrostris,,Crystal,sequencing,0,2024-05-08,,,,,2024-05-10_cp,role-dna-3_D8,fragmented,,,2024-05-09,,2024-05-10-SH_2-CP_2,,PCR-box-1_H9,
+CAHZ,role-loan-2,E8,TCAHZ00967,areia,-35.7455,-6.968616,,RB206,Neopelma pallescens,,Crystal,rePCR,530,2024-05-14,,,,,,role-dna-3_H3,qubit,,,2024-05-14,,,,,
+lebi,role-field-1,E8,B055,araripe,-39.31042,-7.36641,,RB44,Sclerurus cearensis,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_C10,great band,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-1,F3,B059,araripe,-39.31042,-7.36641,,RB48,Arremon taciturnus,,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_D4,,,,,,,,,
+lebi,role-field-1,A3,B003,araripe,-39.31042,-7.36641,muscle,RB3,Cnemotriccus fuscatus,no bands in pcr,Sophia,to be determined,9246,2023-10-10,2023-10-17,201,46,,03-05-2024_ext_sh,role-dna-1_A2,good band,05-08-2024,reextr_A3,,,,,,
+CAHZ,role-loan-1,E9,TCAHZ00095,areia,-35.7455,-6.968616,muscle,RB191,Pyriglena pernambucensis,"2 PCRs have been done, no band on the second",Crystal,rePCR,0,2024-04-08,,,,,,role-dna-2_F9,really good band,,,,2024-05-13,,2024-05-13-sh-cp,,really good sequence. Pyriglena leuconota
+lebi,role-field-1,F4,B060,araripe,-39.31042,-7.36641,,RB49,Sclerurus cearensis,,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_D5,,,,,2024-05-16,,,,
+lebi,role-field-1,D5,B038,araripe,-39.31042,-7.36641,,RB32,Lathrotriccus euleri,,Sophia,PCR,0,,,,,,,role-dna-1_C1,band,,,,,,,,
+lebi,role-field-1,E9,B056,araripe,-39.31042,-7.36641,,RB45,Lathrotriccus euleri,three pcrs have been done,Sophia,no band last pcr,0,,,,,,03-05-2024_ext_sh,role-dna-1_D1,,,,,2024-05-13,,2024-05-13-sh-cp,,
+lebi,role-field-2,F1,B192,baturite,-38.853856,-4.259417,,RB127,Basileuterus culicivorus,,Crystal,rePCR,0,,,,,,,role_dna_A6,,,,2024-05-14,,,,,
+lebi,role-field-1,F2,B058,araripe,-39.31042,-7.36641,,RB47,Synallaxis scutata,more than one band in pcr,Sophia,to be determined,0,,,,,,03-05-2024_ext_sh,role-dna-1_D3,great band,,,,,,,,
+lebi,role-field-1,F5,B062,araripe,-39.31042,-7.36641,,RB50,Synallaxis scutata,,Sophia,rePCR,0,,,,,,03-05-2024_ext_sh,role-dna-1_D6,great band,,,2024-05-17,,,,,
+lebi,role-field-1,E1,B047,araripe,-39.31042,-7.36641,,RB37,Synallaxis scutata,no band in pcr,Sophia,,0,,,,,,03-05-2024_ext_sh,role-dna-1_C5,,,,,,,,,
+lebi,role-field-2,F7,B202,baturite,-38.853856,-4.259417,,RB133,Turdus amaurochalinus,,Crystal,rePCR,0,,,,,,,role-dna-2_B2,,,,2024-04-02,,2024-04-02-cp-sh,,,
+CAHZ,role-loan-1,F7,TCAHZ00941,areia,-35.7455,-6.968616,,RB199,Dacnis cayana,,Crystal,rePCR,442,2024-05-14,,,,,,role-dna-2_G7,qubit,,,2024-05-14,,,,,
+lebi,role-field-1,F6,B063,araripe,-39.31042,-7.36641,,RB51,Lathrotriccus euleri,,Sophia,sequencing,0,,,,,,03-05-2024_ext_sh,role-dna-1_D7,great band,,,,2024-05-16,,,,
+lebi,role-field-1,E4,B050,araripe,-39.31042,-7.36641,,RB40,Herpsilochmus atricapillus,no sample left.,Sophia,,0,04-08-2024,,,,04-12-2024,,role-dna-2-G5,band,04-08-2024,reextr_B10,,04-05-2024,,,,
+CAHZ,role-loan-1,F8,TCAHZ00943,areia,-35.7455,-6.968616,,RB200,Cyanerpes cyaneus,,Crystal,rePCR,590,2024-05-14,,,,,,role-dna-2_G8,qubit,,,2024-05-14,,,,,good sequence. Matches with blast
+lebi,role-field-2,F9,B205,baturite,-38.853856,-4.259417,,RB135,Turdus rufiventris,,Crystal,rePCR,0,,,,,,,role-dna-2_B4,,,,2024-04-02,,2024-04-02-cp-sh,,,
+lebi,role-field-1,F8,B065,araripe,-39.31042,-7.36641,blood,RB53,Sclerurus cearensis,,Sophia,sequencing,0,2023-11-07,,,,2024-03-06,,role-dna-1_D9,,,,2024-03-29,,2024-03-29,,,not good at all.
+CAHZ,role-loan-1,G10,TCAHZ00980,areia,-35.7455,-6.968616,,RB213,Synallaxis frontalis,,Crystal,rePCR,454,2024-05-14,,,,,,role-dna-3_H10,qubit,,,2024-05-14,,,,,good sequence. Matches with blast
+CAHZ,role-loan-1,G2,TCAHZ00965,areia,-35.7455,-6.968616,,RB204,Neopelma pallescens,,Crystal,rePCR,343,2024-05-14,,,,,,role-dna-3_H2,qubit,,,2024-05-14,,,,,
+lebi,role-field-1,F1,B057,araripe,-39.31042,-7.36641,,RB46,Arremon taciturnus,no band,Sophia,,0,,,,,,03-05-2024_ext_sh,role-dna-1_D2,great band,,,,,,,,
+CAHZ,role-loan-1,G4,TCAHZ00968,areia,-35.7455,-6.968616,,RB207,Pachyramphus polychopterus,,Crystal,rePCR,369,2024-05-14,,,,,,role-dna-3_H4,qubit,,,2024-05-14,,,,,
+lebi,role-field-1,G1,B067,araripe,-39.31042,-7.36641,,RB55,Thamnophilus pelzelni,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna-1_E1,,,,,2024-05-16,,,,
+lebi,role-field-1,G3,B069,araripe,-39.31042,-7.36641,,RB57,Sclerurus cearensis,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna-1_E3,,,,,2024-05-16,,,,
+lebi,role-field-1,A5,B005,araripe,-39.31042,-7.36641,muscle,RB5,Cnemotriccus fuscatus,no sample left,Sophia,,214.82,2023-10-10,2023-10-17,4.67,46,2023-10-13,03-05-2024_ext_sh,rbench_A3,faint band,05-08-2024,thrown out. redo.,2024-05-16,,,,,
+CAHZ,role-loan-1,G5,TCAHZ00969,areia,-35.7455,-6.968616,,RB208,Pachyramphus polychopterus,,Crystal,rePCR,252,2024-05-14,,,,,,role-dna-3_H5,qubit,,,2024-05-14,,,,, good sequence. Matches with blast
+lebi,role-field-1,G5,B071,araripe,-39.31042,-7.36641,,RB59,Synallaxis scutata,no band in pcr,Sophia,new PCR protocol, ,04-08-2024,,,,04-12-2024,,role-dna-3_C6,3 extractions. Good band,04-08-2024,reextr_C3/C4,,04-05-2024,,,,
+lebi,role-field-1,G6,B072,araripe,-39.31042,-7.36641,,RB60,Synallaxis scutata,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna-1_E5,,,,,2024-05-16,,,,
+lebi,role-field-1,G7,B073,araripe,-39.31042,-7.36641,,RB61,Synallaxis scutata,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna_1_E6,no band,05-08-2024,reextr_C5,,2024-05-16,,,,
+lebi,role-field-1,H1,B077,araripe,-39.31042,-7.36641,,RB64,Synallaxis scutata,,Sophia,sequencing,0,11-14-2023,,,,,03-06-2024_ext_sh,role-dna-1_E9,,05-14-2024,reextr_C7,2024-05-16,,,,,
+lebi,role-field-2,G6,B228,areia,-35.7455,-6.968616,muscle,RB141,Formicivora grisea,no band in pcr,Crystal,rePCR,0,2024-04-03,,,,,,role-dna-2_B6,faint band,,,2024-04-02,2024-05-17,,,,really good sequence. Matches with blast.
+lebi,role-field-1,H2,B078,araripe,-39.31042,-7.36641,blood,RB65,Neopelma pallescens,,Sophia,sequencing,0,2023-11-14,,,,2023-11-20,,role-dna-1_E10,,,,2024-03-29,,2024-03-29,,,
+lebi,role-field-1,G2,B068,araripe,-39.31042,-7.36641,,RB56,Neopelma pallescens,multiple bands in repcr,Sophia,to be determined,0,,,,,,03-06-2024_ext_sh,role-dna-1_E2,264 of qubit dna,,,,2024-05-16,,,,
+lebi,role-field-1,G4,B070,araripe,-39.31042,-7.36641,,RB58,Basileuterus culicivorus,no band in pcr,Sophia,to be determined,0,,,,,,03-06-2024_ext_sh,role-dna-1_E4,no band,05-08-2024,reextr_C2,,,,,,
+lebi,role-field-1,G8,B074,araripe,-39.31042,-7.36641,,RB62,Sittasomus griseicapillus,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_E7,no band but a lot of dna,,,2024-05-17,,,,,
+lebi,role-field-1,H4,B080,araripe,-39.31042,-7.36641,,RB67,Turdus leucomelas,,Sophia,sequencing,0,11-14-2023,,,,,03-06-2024_ext_sh,role-dna-1_F2,,05-14-2024,reextr_C8,2024-05-16,,,,,
+lebi,role-field-1,F9,B066,araripe,-39.31042,-7.36641,,RB54,Sittasomus griseicapillus,multiple bands in repcr,Sophia,to be determined,0,,,,,,03-06-2024_ext_sh,role-dna-1_D10,no band but 447 of dna,,,,2024-05-16,,,,
+lebi,role-field-1,F7,B064,araripe,-39.31042,-7.36641,,RB52,Basileuterus culicivorus,faint band in repcr,Sophia,re-extract,0,,,,,,03-05-2024_ext_sh,role-dna-1_D8,,,,,2024-05-16,,,,
+lebi,role-field-1,G9,B076,araripe,-39.31042,-7.36641,,RB63,Myiothlypis flaveola,no bands in repcr,Sophia,reextract,0,11-07-2023,,,,,03-06-2024_ext_sh,role-dna-1_E8,,05-14-2024,reextr_C4,2024-05-16,,,,,
+lebi,role-field-1,H8,B091,ubajara,-40.89817,-3.83945,,RB71,Sclerurus cearensis,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna-1_F5,,,,,2024-05-16,,,,
+lebi,role-field-1,I2,B094,ubajara,-40.89817,-3.83945,,RB74,Synallaxis scutata,,Sophia,sequencing,0,11-14-2023,,,,,03-06-2024_ext_sh,role-dna-1_F8,,05-14-2024,reextr_C9,2024-05-16,,,,,
+lebi,role-field-1,I7,B104,ubajara,-40.89817,-3.83945,,RB79,Arremon taciturnus,,Sophia,sequencing,0,11-14-2023,,,,,03-06-2024_ext_sh,role-dna-1_G2,,05-14-2024,reextr_CD1,2024-05-16,,,,,
+CAHZ,role-loan-1,H1,TCAHZ00981,areia,-35.7455,-6.968616,,RB214,Synallaxis frontalis,,Crystal,rePCR,520,2024-05-14,,,,,,role-dna-2_I1,qubit,,,2024-05-14,,,,, good sequence. Matches with blast
+lebi,role-field-1,A8,B010,araripe,-39.31042,-7.36641,muscle,RB8,Cyanocorax cyanopogon,,Sophia,sequencing,9504,2023-10-18,2023-10-20,216,44,2023-10-20,2023-10-20-sh-1,role-dna-1_A3,,,,2024-03-27,,2024-03-27,,,really good. Species match with blast.
+CAHZ,role-loan-1,H3,TCAHZ00983,areia,-35.7455,-6.968616,,RB216,Cantorchilus longirostris,,Crystal,rePCR,215,2024-05-14,,,,,,role-dna-2_I3,qubit,,,2024-05-14,,,,,good sequence. doesnt match with blast (Thryothorus longirostris or TPA: Cantorchilus leucotis mitochondrion)
+lebi,role-field-1,H3,B079,araripe,-39.31042,-7.36641,,RB66,Neopelma pallescens,,Sophia,rePCR,0,11-14-2023,,,,,03-06-2024_ext_sh,role-dna-1_F1,good band,05-14-2024,,2024-05-17,,,,,
+CAHZ,role-loan-1,H4,TCAHZ00987,areia,-35.7455,-6.968616,,RB217,Taraba major,,Crystal,rePCR,271,2024-05-14,,,,,,role-dna-2_I4,qubit,,,2024-05-14,,,,, good sequence. Matches with blast
+lebi,role-field-1,H5,B082,ubajara,-40.89817,-3.83945,,RB68,Arremon taciturnus,,Sophia,reextract,0,11-14-2023,,,,,03-06-2024_ext_sh,role-dna-1_F3,,05-14-2024,,,,,,,really good sequence. matches with blast
+lebi,role-field-1,I9,B109,ubajara,-40.89817,-3.83945,,RB81,Sclerurus cearensis,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna-1_G4,,,,,2024-05-16,,,,
+lebi,role-field-1,H6,B083,ubajara,-40.89817,-3.83945,,RB69,Arremon taciturnus,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_F4,good band,,,,,,,,really good sequence. matches with blast.
+lebi,role-field-1,H7,B085,ubajara,-40.89817,-3.83945,,RB70,Tolmomyias flaviventris,,Sophia,reextract,4830,,2023-03-21,105,46,,03-06-2024_ext_sh,role-dna-1_F5,good band,,,,,,,,
+CAHZ,role-loan-1,G9,TCAHZ00978,areia,-35.7455,-6.968616,,RB212,Xenops minutus,,Crystal,sequencing,194,2024-05-14,,,,,,role-dna-3_H9,qubit,,,2024-05-16,,,,,
+lebi,role-field-1,I3,B095,ubajara,-40.89817,-3.83945,,RB75,Synallaxis scutata,,Sophia,PCR,0,,,,,,,role-dna-1_F9,fragmentated but good band,,,,,,,,
+lebi,role-field-1,H9,B092,ubajara,-40.89817,-3.83945,,RB72,Sclerurus cearensis,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_F6,good band,,,2024-05-17,,,,,83% good quality sequence. sclerurus mexicanus
+lebi,role-field-1,I1,B093,ubajara,-40.89817,-3.83945,,RB73,Arremon taciturnus,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_F7,good band,,,2024-05-17,,,,,good sequence. matches with blast.
+lebi,role-field-1,I6,B098,ubajara,-40.89817,-3.83945,,RB78,Arremon taciturnus,,Sophia,rePCR,0,04-08-2024,,,,04-12-2024,,role-dna-2-G7,faint band,04-08-2024,reextr_C10,,04-05-2024,,,,
+CAHZ,role-loan-1,G8,TCAHZ00977,areia,-35.7455,-6.968616,,RB211,Leptopogon amaurocephalus,,Crystal,sequencing,397,2024-05-14,,,,,,role-dna-3_H8,qubit,,,2024-05-16,,,,,
+lebi,role-field-2,A2,B111,ubajara,-40.89817,-3.83945,,RB83,Sclerurus cearensis,,Sophia,sequencing,0,,,,,,03-06-2024_ext_sh,role-dna-1_G6,band,,,,2024-05-16,,,,
+CAHZ,role-loan-1,I10,TCAHZ01308,ubajara,-40.89817,-3.83945,,RB233,Turdus leucomelas,no band on pcr,Sophia,repcr,0,,,,,,,role-dna-2_I10,good band,,,2024-05-17,,,,, good sequence. Matches with blast
+CAHZ,role-loan-1,G7,TCAHZ00974,areia,-35.7455,-6.968616,,RB210,Formicivora grisea,,Crystal,sequencing,297,2024-05-14,,,,,,role-dna-3_H7,qubit,,,2024-05-16,,,,,
+lebi,role-field-1,I4,B096,ubajara,-40.89817,-3.83945,,RB76,Arremon taciturnus,,Sophia,RePCR,0,,,,,,03-06-2024_ext_sh,role-dna-1_F10,fragmentated band,,,2024-05-17,,,,,
+CAHZ,role-loan-1,G6,TCAHZ00973,areia,-35.7455,-6.968616,,RB209,Formicivora grisea,,Crystal,sequencing,292,2024-05-14,,,,,,role-dna-3_H6,qubit,,,2024-05-16,,,,,
+lebi,role-field-2,A3,B112,ubajara,-40.89817,-3.83945,,RB84,Sclerurus cearensis,,Sophia,sequencing,0,11-29-2023,,,,,03-06-2024_ext_sh,role-dna-1_G7,,05-14-2024,reextr_D2,,2024-05-16,,,,
+lebi,role-field-1,I5,B097,ubajara,-40.89817,-3.83945,,RB77,Arremon taciturnus,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_G1,band,,,2024-05-17,,,,,good sequence. matches with blast.
+lebi,role-field-2,A5,B115,ubajara,-40.89817,-3.83945,,RB86,Sclerurus cearensis,,Sophia,PCR,0,04-08-2024,,,,04-12-2024,,role-dna-2-G8,good band,04-08-2024,reextr_D3,,,,,,
+CAHZ,role-loan-1,I7,TCAHZ01292,ubajara,-40.89817,-3.83945,,RB230,Lathrotriccus euleri,no band on pcr,Sophia,repcr,0,,,,,,,role-dna-2_I7,good band,,,2024-05-17,,,,, good sequence. Matches with blast
+lebi,role-field-1,I8,B108,ubajara,-40.89817,-3.83945,,RB80,Turdus leucomelas,,Sophia,sequence probation,0,,,,,,03-06-2024_ext_sh,role-dna-1_G3,band,,,2024-05-17,,,,,76% sequence. matches with blast.
+lebi,role-field-2,A8,B119,ubajara,-40.89817,-3.83945,muscle,RB89,Synallaxis scutata,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H1,good band,,,2024-04-01,,2024-04-01-sh-cp-2.jpeg,,,really good. it matches with blast
+lebi,role-field-1,A9,B011,araripe,-39.31042,-7.36641,muscle,RB9,Basileuterus culicivorus,,Sophia,sequencing,6732,2023-10-18,2023-10-20,153,44,2023-10-20,2023-10-20-sh-1,role-dna-1_A4,good band,,,2024-03-27,,2024-03-27,,,
+lebi,role-field-2,A9,B121,ubajara,-40.89817,-3.83945,muscle,RB90,Synallaxis scutata,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H2,good band,,,2024-04-02,,2024-04-02,,,great. matches with blast
+lebi,role-field-2,B1,B122,ubajara,-40.89817,-3.83945,,RB91,Dendrocolaptes platyrostris,,Sophia,rePCR,0,04-08-2024,,,,04-12-2024,,role-dna-2-G9,good band,04-08-2024,reextr_D4,,,,,,
+lebi,role-field-2,B2,B123,ubajara,-40.89817,-3.83945,muscle,RB92,Arremon taciturnus,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H3,good band,,,2024-04-02,,2024-04-02,,,great. Matches with blast.
+lebi,role-field-2,B3,B126,ubajara,-40.89817,-3.83945,muscle,RB93,Arremon taciturnus,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H4,good band,,,2024-04-02,,2024-04-02,,,great. Matches with blast.
+lebi,role-field-2,B4,B127,ubajara,-40.89817,-3.83945,muscle,RB94,Dendrocolaptes platyrostris,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H5,good band,,,2024-04-02,,2024-04-02,,,great. Matches with blast.
+lebi,role-field-2,B5,B128,ubajara,-40.89817,-3.83945,muscle,RB95,Dendrocolaptes platyrostris,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H6,good band,,,2024-04-02,,2024-04-02,,,great. Matches with blast.
+CAHZ,role-loan-1,J8,TCAHZ01333,ubajara,-40.89817,-3.83945,,RB241,Thamnophilus pelzelni,,Sophia,rePCR,0,,,,,,,role-dna-3_J8,good band,2024-04-03,,,04-05-2024,,,,
+lebi,role-field-2,B7,B130,ubajara,-40.89817,-3.83945,muscle,RB97,Dendrocolaptes platyrostris,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,24-03-06_ext_SH,role-dna-1_H7,good band,,,2024-04-02,,2024-04-02,,,great. matches with blast
+lebi,role-field-2,B8,B131,ubajara,-40.89817,-3.83945,,RB98,Taraba major,,Sophia,rePCR,0,04-08-2024,,,,04-12-2024,,role-dna-2-H1,good band,04-08-2024,reextr_D6,,04-05-2024,,,,
+lebi,role-field-2,B9,B133,ubajara,-40.89817,-3.83945,muscle,RB99,Turdus leucomelas,,Sophia,sequencing,0,2023-11-29,,,,2023-12-13,,role-dna-1_H8,no band but 830 of dna,,,2024-04-02,,2024-04-02,,,great. Matches with blast.
