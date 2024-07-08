@@ -117,13 +117,27 @@ Take a quick look at samples to see if things worked.
 
 Now that we have both `coi_data` and `info` objects, we will use the magic of *joining* in `tidyverse`. This `join` functions are very useful when we want to add info from one table to another by matching their info in a specific column, which is exactly what we want to do here. We can't just merge the two tables because they have different number of rows and they are not in the same order. What we need R to do is to get the code of each of our sequences and then look for that code in our labwork spreadsheet and attach the info for that sample in our table. Here, we are going to use the function `left_join()` to do just that.
 
-We start with `coi_data` and we pipe it into `left_join()`. In this function, we tell where is the info that we wanna look up (i.e., the `info` object) and we tell which column should be used to match the two tables (i.e., the column `code`).
+One issue we have here that needs to be corrected is that our fasta samples have duplicate individuals, i.e., they were sequenced more than once and are referred to in the files with their respective code plus a dash (`-`) or an undescores (`_`). Because these are sequences from the same individual, we need to remove the duplicates, keeping only one sequence per individual. Additionally, before using the magic of joining, we need to get rid of the dash and underscore (and the number that comes after), because they are not present in the `info` object. To make these modifications, we will first 1) remove the dash/underscore using `str_replace()`; 2) remove the duplicates using the function `distinct()`.
+
+Notice that when we used `str_replace()` earlier, we knew exactly what we wanted to replace (i.e., `>` for an empty space). In this case, we know that we have to find a dash/underscore, but also some number after it; both of them need to be replaced by an empty space. However, the number will not always be the same (i.e., sometimes it's `-1`, sometimes it's `-2`). To deal with that, we can use something called a [regular expression](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html) to tell R to find something that matches a specific criterion, instead of a specific word. In our present case, we will use the regular expression `[:digit:]`, which R interprets as "any digit". We will also add a `$` at the end, which will force R to replace only digits that it finds at the end of a word; this will avoid R replacing the numbers in the sample code, after the letters `RB`. We should also put the dash/underscore before `[:digit:]`. The final expression to be found should then be: `-[:digit:$]`, which translates to "any digit coming after a dash at the end of the word". The same approach can be used for the underscore: `_[:digit:$]`.
+
+After `str_replace()` is used, some rows will have the same code. We can pipe all that into the function `distinct()` to remove the rows that duplicate codes. All that can be done in one line of code, as seen below:
+
+```{r}
+code <- code %>%
+  mutate(code = str_replace(code,pattern='-[:digit:]$',replacement = '')) %>%
+  mutate(code = str_replace(code,pattern='_[:digit:]$',replacement = '')) %>%
+  distinct(code,.keep_all = TRUE)
+```
+
+Now we can use the magic of joining. We start with `coi_data` and we pipe it into `left_join()`. In this function, we tell where is the info that we wanna look up (i.e., the `info` object) and we tell which column should be used to match the two tables (i.e., the column `code`).
 
 ```{r message=FALSE,warning=FALSE}
 coi_data <- coi_data %>% left_join(info,by='code')
 ```
 
 If we look at `coi_data` now, you will see that we have the original info (code and sequence) plus the new info from our labwork spreadsheet (island and species name). This is our final spreadsheet that we need to start splitting sequences per island per species.
+
 
 #### Step 3. Splitting per island per species
 

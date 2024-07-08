@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,12 +18,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,13 +47,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -69,35 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="aln_gendiv_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="aln_gendiv_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -128,9 +129,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <section id="intro" class="level2">
 <h2 class="anchored" data-anchor-id="intro">Intro</h2>
@@ -267,9 +266,18 @@ $ sequence_quality &lt;chr&gt; NA, NA, "good sequence. Mathces with blast", NA, 
 </div>
 <p>Take a quick look at samples to see if things worked.</p>
 <p>Now that we have both <code>coi_data</code> and <code>info</code> objects, we will use the magic of <em>joining</em> in <code>tidyverse</code>. This <code>join</code> functions are very useful when we want to add info from one table to another by matching their info in a specific column, which is exactly what we want to do here. We can’t just merge the two tables because they have different number of rows and they are not in the same order. What we need R to do is to get the code of each of our sequences and then look for that code in our labwork spreadsheet and attach the info for that sample in our table. Here, we are going to use the function <code>left_join()</code> to do just that.</p>
-<p>We start with <code>coi_data</code> and we pipe it into <code>left_join()</code>. In this function, we tell where is the info that we wanna look up (i.e., the <code>info</code> object) and we tell which column should be used to match the two tables (i.e., the column <code>code</code>).</p>
+<p>One issue we have here that needs to be corrected is that our fasta samples have duplicate individuals, i.e., they were sequenced more than once and are referred to in the files with their respective code plus a dash (<code>-</code>) or an undescores (<code>_</code>). Because these are sequences from the same individual, we need to remove the duplicates, keeping only one sequence per individual. Additionally, before using the magic of joining, we need to get rid of the dash and underscore (and the number that comes after), because they are not present in the <code>info</code> object. To make these modifications, we will first 1) remove the dash/underscore using <code>str_replace()</code>; 2) remove the duplicates using the function <code>distinct()</code>.</p>
+<p>Notice that when we used <code>str_replace()</code> earlier, we knew exactly what we wanted to replace (i.e., <code>&gt;</code> for an empty space). In this case, we know that we have to find a dash/underscore, but also some number after it; both of them need to be replaced by an empty space. However, the number will not always be the same (i.e., sometimes it’s <code>-1</code>, sometimes it’s <code>-2</code>). To deal with that, we can use something called a <a href="https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html">regular expression</a> to tell R to find something that matches a specific criterion, instead of a specific word. In our present case, we will use the regular expression <code>[:digit:]</code>, which R interprets as “any digit”. We will also add a <code>$</code> at the end, which will force R to replace only digits that it finds at the end of a word; this will avoid R replacing the numbers in the sample code, after the letters <code>RB</code>. We should also put the dash/underscore before <code>[:digit:]</code>. The final expression to be found should then be: <code>-[:digit:$]</code>, which translates to “any digit coming after a dash at the end of the word”. The same approach can be used for the underscore: <code>_[:digit:$]</code>.</p>
+<p>After <code>str_replace()</code> is used, some rows will have the same code. We can pipe all that into the function <code>distinct()</code> to remove the rows that duplicate codes. All that can be done in one line of code, as seen below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(info,<span class="at">by=</span><span class="st">'code'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>code <span class="ot">&lt;-</span> code <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code =</span> <span class="fu">str_replace</span>(code,<span class="at">pattern=</span><span class="st">'-[:digit:]$'</span>,<span class="at">replacement =</span> <span class="st">''</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code =</span> <span class="fu">str_replace</span>(code,<span class="at">pattern=</span><span class="st">'_[:digit:]$'</span>,<span class="at">replacement =</span> <span class="st">''</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(code,<span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can use the magic of joining. We start with <code>coi_data</code> and we pipe it into <code>left_join()</code>. In this function, we tell where is the info that we wanna look up (i.e., the <code>info</code> object) and we tell which column should be used to match the two tables (i.e., the column <code>code</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(info,<span class="at">by=</span><span class="st">'code'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we look at <code>coi_data</code> now, you will see that we have the original info (code and sequence) plus the new info from our labwork spreadsheet (island and species name). This is our final spreadsheet that we need to start splitting sequences per island per species.</p>
 </section>
@@ -279,20 +287,19 @@ $ sequence_quality &lt;chr&gt; NA, NA, "good sequence. Mathces with blast", NA, 
 <p>An easy way to split tables in R is using the functions <code>group_by()</code> and <code>summarize()</code>. <code>group_by()</code> will create subgroups of rows in a table based on the values of specific columns. Then any operation we do on that table will be performed per group (instead of the whole table). We can use that to retrieve sequences per island per species. <code>summarize()</code> allows us to create a new table that is based on that grouping and has new values that is calculated from those groups.</p>
 <p>We can start by using <code>group_by()</code> and telling what columns we want to use to group. Basically, we want to group by islands, and then within islands we want to group by species names.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(island,binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(island,binomial)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you look at <code>coi_data</code>, you will notice nothing changes in our table, except that at the top of its information, we now see something that says the groups in our table. This means that our table is now grouped, and any operations will do will be performed per group. <code>group_by()</code> does not modify the content of your data, it just lets R know that the rows should be grouped based on the column value when we perform operations.</p>
 <p>Now, if we use <code>summarize()</code>, we will modify the entire table. <code>summarize()</code> will keep the columns that are used for groups (i.e., island and binomial), but will delete all others and create a new column based on the info we give to it. In our case, we want our new column to have all the sequences for that island and that species. So, we can tell <code>summarize()</code> to create a new column from the sequence column. We use the function <code>list()</code> to avoid summarizing merging all the sequences of the species into one single sequence. What we want is to keep the sequences separated as two elements within that row.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sequence =</span> <span class="fu">list</span>(sequence))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sequence =</span> <span class="fu">list</span>(sequence))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If you look at the table now, you will see we got exactly what we wanted. The table changed completely: our first column is our first group (island), the second column is the second group (binomial) and the third column was created by summarize and, for each row, it contains all the sequences for that species in that island. We can check those sequences by calling for the location in the table specifically. For instance, to see the sequences for the first island and species in the table (row 1), we can use:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>sequence[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>sequence[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] "CTTTGGCGCNTGAGCTGGAATAATTGGAACCGCCCTCAGCCTCCTTATTCGAGCCGAACTTGGACAACCAGGAACCCTACTAGGAGACGACCAAATTTACAATGTAATTGTTACTGCACATGCATTCGTCATAATCTTCTTCATAGTTATACCCATCATAATTGGCGGATTCGGCAACTGATTAGTTCCCCTAATAATTGGAGCCCCTGATATAGCATTCCCACGAATAAACAACATAAGCTTTTGACTCCTACCTCCCTCCTTCCTCCTCCTCCTAGCCTCTTCAACAGTAGAAGCAGGAGTAGGAACCGGATGAACAGTATATCCACCACTAGCCGGCAACCTAGCCCATGCCGGAGCTTCAGTAGACCTAGCTATTTTTTCCCTCCATTTAGCAGGTGTTTCCTCCATTTTAGGGGCAATTAACTTCATCACCACTGCAATCAATATAAAACCCCCAGCACTATCACAATACCAAACTCCCTTATTCGTTTGATCCGTTCTTATCACTGCCGTATTACTACTCCTCTCCCTCCCAGTTCTTGCCGCCGGCATTACAATATTACTCACAGATCGTAACCTAAACACAACATTCTTTGACCCAGCCGGAGGTGGAGACCCAATTCTGTACCAACATTTATTCTGATTCTTTGGTCACCCAGAAGT"
-[2] "GGCGCATGAGCTGGAATAATTGGAACCGCCCTCAGCCTCCTTATTCGAGCCGAACTTGGACAACCAGGAACCCTACTAGGAGACGACCAAATTTACAATGTAATTGTTACTGCACATGCATTCATCATAATCTTCTTCATAGTTATACCCATCATAATTGGCGGATTCGGCAACTGATTAGTTCCCCTAATAATTGGAGCCCCTGATATAGCATTCCCACGAATAAACAACATAAGCTTTTGACTCCTACCTCCCTCTTTCCTCCTCCTCCTAGCCTCTTCAACAGTAGAAGCAGGAGTAGGAACCGGATGAACAGTATATCCACCACTAGCCGGCAACCTAGCCCATGCCGGAGCTTCAGTAGACCTAGCTATTTTTTCCCTCCATTTAGCAGGTGTTTCCTCCATTTTAGGGGCAATCAACTTCATCACCACTGCAATCAATATAAAACCCCCAGCACTATCACAATACCAAACTCCCTTATTCGTTTGATCCGTTCTTATCACTGCCGTATTACTACTCCTCTCCCTCCCAGTTCTTGCCGCCGGCATTACAATATTACTCACAGATCGTAACCTAAACACAACATTCTTTGACCCGGCCGGAGGTGGAGACCCAATTCTGTACCAACATTTATTCTGATTCTTTGGTCA"             </code></pre>
+[1] "GTACNTAATCTTCGGAGCATGAGCCGGATAGTAGGTACCGCCCTGAGCCTCCTTATTCGAGCAGAACTAGGCCAACCTGGTTCTCTACTAGGAGACGACCAAATCTACAATGTAATCGTTACAGCTCACGCTTTCGTCATAATCTTCTTCATAGTAATACCAATCATAATCGGAGGATTTGGAAACTGACTAGTACCACTAATGATCGGTGCCCCAGATATAGCATTCCCACGAATGAACAATATGAGCTTCTGACTTCTCCCTCCATCATTCCTTCTCCTCCTAGCTTCCTCAACAGTAGAAGCAGGAGTAGGAACAGGATGAACCGTGTATCCTCCACTAGCCGGCAACCTAGCCCACGCTGGAGCTTCAGTTGACCTGGCCATCTTCTCACTACATCTGGCAGGTATCTCCTCTATCCTAGGAGCAATCAACTTCATTACCACAGCAATCAATATAAAACCACCAGCCCTATCACAATATCAAACCCCCCTATTCGTATGATCCGTCCTAATTACTGCAGTACTGCTCCTTCTTTCTCTTCCTGTTCTTGCTGCTGGAATTACTATACTTCTAACAGACCGTAATCTCAACACCACATTCTTTGACCCAGCCGGAGGAGGCGACCCAGTACTATACCAGCACCTATTCTGATNCTTCGGCCATCCAGAAGTCTACATCCTAATCCTCCC"</code></pre>
 </div>
 </div>
 <p>Notice this comes back as a list. You have the symbol <code>[[1]]</code> in the beginning showing it’s the first element of the list. And then you have two elements in that list (denoted by <code>[1]</code> and <code>[2]</code>), each element being a separate sequence for a separate individual in that species in that island.</p>
@@ -306,11 +313,11 @@ $ sequence_quality &lt;chr&gt; NA, NA, "good sequence. Mathces with blast", NA, 
 <p>NOTE: we have to add <code>[[1]]</code> to sequence in the code below. If we don’t, we are counting how many rows we have per island per species. When we add <code>[[1]]</code>, we are accessing the elements (i.e., sequences) inside the list (the <code>[1]</code>,<code>[2]</code>,etc.), and checking how many of those elements we have. Note for future self: make a diagram to help visualize this better.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(island,binomial) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">length</span>(sequence[[<span class="dv">1</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(island,binomial) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">length</span>(sequence[[<span class="dv">1</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can use <code>filter()</code> to keep only species with more than one sequence per island:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Okay, so far so good (hopefully). We will now transform these sequences into <code>DNAStringSet</code>. The function that does that is simply called <code>DNAStringSet()</code> and is in the package <code>Biostrings</code>, so we need to load that package. We can then use <code>mutate()</code> again: remember it will create a new column <em>or</em> modify an existing column. If we give it a name of a column that exists, it will just modify the column based on its content. We can use <code>mutate()</code> to say that the column <code>sequence</code> now should be the <code>DNAStringSet</code> of whatever is in column sequence.</p>
 <p>A few quirks here: 1) we need to use <code>unlist()</code> to transform the <code>list</code> into a <code>vector</code> when creating the <code>DNAStringSet</code>. This is because the function <code>DNAStringSet()</code> requires a <code>vector</code> of sequences, not a <code>list</code>. This is just handling the types of objects (<code>vector</code> vs <code>list</code>) to match what the function requires. The data itself does not change at all. 2) For the same reason, we need to use <code>list()</code> to create the <code>list</code> again. The function <code>DNAStringSet</code> returns an object of the type <code>DNAStringSet</code> (duh!), but we can’t save that object type directly into a table. So we transform them into a <code>list</code> first, which can be saved into the table. Lists are basically just general types of object that can store pretty much anything, and a very useful to organize complex data into a table</p>
@@ -320,12 +327,12 @@ $ sequence_quality &lt;chr&gt; NA, NA, "good sequence. Mathces with blast", NA, 
 <p>AGAIN a diagram would be awesome.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Biostrings)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(binomial) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sequence =</span> <span class="fu">list</span>(<span class="fu">DNAStringSet</span>(<span class="fu">unlist</span>(sequence))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Biostrings)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(binomial) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sequence =</span> <span class="fu">list</span>(<span class="fu">DNAStringSet</span>(<span class="fu">unlist</span>(sequence))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we call <code>coi_data</code>, we will notice that the objects inside <code>sequence</code> have now changed from the type <code>chr</code> (a character vector) to <code>DNAStrnS</code> (object of type <code>DNAStringSet</code>). Let’s call one of those objects to visualize it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>sequence[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>sequence[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 DNAStringSet object of length 2:
@@ -336,12 +343,12 @@ DNAStringSet object of length 2:
 </div>
 <p>We can see that the content is now formatted following the standards of the package <code>Biostrings</code>: we have the info of the width of each sequence, the sequence itself, and each base has a different color. This is the type of object we need for the alignment. Again, we can perform the alignment on each them with <code>mutate()</code> and the <code>muscle()</code> function from the <code>muscle</code> package. We save it to a different column called <code>aln</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(muscle)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">aln =</span> <span class="fu">list</span>(muscle<span class="sc">::</span><span class="fu">muscle</span>(sequence[[<span class="dv">1</span>]])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(muscle)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">aln =</span> <span class="fu">list</span>(muscle<span class="sc">::</span><span class="fu">muscle</span>(sequence[[<span class="dv">1</span>]])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A quick check of the <code>aln</code> column shows us the sequences are now aligned:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>aln[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>coi_data<span class="sc">$</span>aln[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 DNAMultipleAlignment with 2 rows and 666 columns
@@ -360,8 +367,8 @@ DNAMultipleAlignment with 2 rows and 666 columns
 <p>Because <code>nuc.div()</code> returns a numeric value, we don’t need to use <code>list()</code> to save it to the table. Numeric vales can be directly saved to the table in R.</p>
 <p>We call this new column <code>pi</code> because it is the greek letter (<span class="math inline">\(\pi\)</span>) used to represent nucleotide diversity in population genetics.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pegas)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="fu">nuc.div</span>(<span class="fu">as.DNAbin</span>(aln[[<span class="dv">1</span>]])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pegas)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>coi_data <span class="ot">&lt;-</span> coi_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pi =</span> <span class="fu">nuc.div</span>(<span class="fu">as.DNAbin</span>(aln[[<span class="dv">1</span>]])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If we check our dataset now, we can see that we have a new column called <code>pi</code> with a bunch of numbers. Those are the calculated values for the metric of nucleotide diversity per species per island. This value is the basic input information for all the following analyses we will perform. With this data, we can see how much genetic diversity varies per species and per island and compare that to different datasets. We can, for instance, check if genetic diversity and abundance are correlated, ,or check if ecological traits such as body size and diet explain species abundance and their genetic diversity. We can also investigate how characteristics of the islands (such as area or connectivity) influence the distribution of the genetic diversity in the community.</p>
 </section>
@@ -370,25 +377,17 @@ DNAMultipleAlignment with 2 rows and 666 columns
 <p>Just for fun, let’s finalize with a simple plot of the genetic diversity in each community. For that, we can use the package <code>ggplot</code>, which is part of the packages within <code>tidyverse</code>. All sorts of plots can be done with <code>ggplot</code>: here we will be doing a simple <a href="https://en.wikipedia.org/wiki/Scatter_plot">scatter plot</a> to visualize the distribution of genetic diversity in each community.</p>
 <p>We start by calling the function <code>ggplot()</code> and saying that our data is <code>coi_data</code>. This is the information on <em>WHAT</em> to plot. Then we state that our X axis should be the species name and the Y axis should be the genetic diversity for that species. We set those axes within the function <code>aes()</code> because these axes are information on <em>HOW</em> to map our data to the plot. Now we have to set the <em>geometry</em> that we want to use: do we want to plot points? Or do we want to plot lines? Or bars? In our case, we want a scatter plot, which is simply points, so we can close the function <code>ggplot()</code> and add another function (with a <code>+</code>) that is called <code>geom_point()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coi_data,<span class="fu">aes</span>(<span class="at">x=</span>binomial,<span class="at">y=</span>pi))<span class="sc">+</span><span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coi_data,<span class="fu">aes</span>(<span class="at">x=</span>binomial,<span class="at">y=</span>pi))<span class="sc">+</span><span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="aln_gendiv_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="aln_gendiv_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Note that we don’t have a plot per islands. At no moment we told ggplot that we wanted just the values from this island or that island. We could do so by using a function called <code>facet_wrap()</code>. This function will use one of the columns and make different plots, one for each value in that column. We have to tell that function what column we wannt use.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coi_data,<span class="fu">aes</span>(<span class="at">x=</span>binomial,<span class="at">y=</span>pi))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(coi_data,<span class="fu">aes</span>(<span class="at">x=</span>binomial,<span class="at">y=</span>pi))<span class="sc">+</span><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="aln_gendiv_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="aln_gendiv_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now we have four plots: one per island. This is a nice way to quickly visualize and compare the genetic diversity per island.</p>
@@ -427,23 +426,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -479,27 +464,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -509,17 +477,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -531,245 +490,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -810,7 +533,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
