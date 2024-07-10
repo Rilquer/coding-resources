@@ -262,3 +262,33 @@ Usually, when plotting distributions such as the [Species Abundance Distribution
 To make this ranked plot, we can use arrange...
 
 TO BE CONTINUED
+
+#### Step 7. Comparing abundance and genetic diversity
+
+```{r message=FALSE,warning=FALSE}
+comm <- readRDS(file = 'data/bird/abundance/comm_counts_samples.rds')
+comm <- lapply(1:length(comm),function(x){return(mutate(comm[[x]],island = rep(names(comm)[x],nrow(comm[[x]]))))}) %>%
+  do.call(what = rbind.data.frame) %>% mutate(island = str_to_lower(island)) %>%
+  rename(sciName = 'binomial') %>%
+  left_join(coi_data,by=c('island','binomial')) %>%
+  select(!c(sequence,aln,)) %>%
+  mutate(binomial = fct_reorder(binomial,dplyr::desc(total)))
+coeff <- 10^3.2 # Coefficient for second axis
+
+library(ggthemes)
+comm %>%
+  ggplot(aes(x=binomial,y=total,group=island))+
+  geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
+  stat_smooth(aes(y=total, x=binomial), method = lm, formula = y ~ poly(x, 10), se = FALSE,
+              col = 'red',size=0.5)+
+  geom_point(aes(y=pi*coeff),color='purple',size=1.5)+
+  facet_wrap(~island)+
+  scale_y_continuous(
+    name = "Abundance",
+    sec.axis = sec_axis(~./coeff, name="Nuc. Div.")
+  )+
+  labs(x='Species')+
+  theme_minimal()+
+  theme(axis.text.x = element_blank(),
+        axis.ticks = element_blank())
+```

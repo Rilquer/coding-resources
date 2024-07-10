@@ -44,9 +44,32 @@ coi_data <- coi_data %>% mutate(aln = list(muscle::muscle(sequence[[1]])))
 library(pegas)
 coi_data <- coi_data %>% mutate(pi = nuc.div(as.DNAbin(aln[[1]])))
 
-## GOTTA FIGURE THIS OUT
-library(forcats)
-coi_data %>% arrange(pi) %>%
-  mutate(binomial = factor(binomial, levels=binomial)) %>% 
-  ggplot(aes(x=binomial,y=pi))+geom_point()+
-  facet_wrap(~island)
+## Plotting abundance and genetics
+
+comm <- readRDS(file = 'data/bird/abundance/comm_counts_samples.rds')
+comm <- lapply(1:length(comm),function(x){return(mutate(comm[[x]],island = rep(names(comm)[x],nrow(comm[[x]]))))}) %>%
+  do.call(what = rbind.data.frame) %>% mutate(island = str_to_lower(island)) %>%
+  rename(sciName = 'binomial') %>%
+  left_join(coi_data,by=c('island','binomial')) %>%
+  select(!c(sequence,aln,)) %>%
+  #replace_na(list(n = 0, pi = 0)) %>%
+  mutate(binomial = fct_reorder(binomial,dplyr::desc(total)))
+coeff <- 10^3.2 # Coefficient for second axis
+library(ggthemes)
+
+comm %>%
+  ggplot(aes(x=binomial,y=total,group=island))+
+  geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
+  stat_smooth(aes(y=total, x=binomial), method = lm, formula = y ~ poly(x, 10), se = FALSE,
+              col = 'lightblue',size=0.5)+
+  geom_point(aes(y=pi*coeff),color='purple')+
+  facet_wrap(~island)+
+  scale_y_continuous(
+    name = "Abundance",
+    sec.axis = sec_axis(~./coeff, name="Nuc. Div.")
+  )+
+  labs(x='Species')+
+  #theme_hc()
+  theme_few()+
+  theme(axis.text.x = element_blank(),
+        axis.ticks = element_blank())
