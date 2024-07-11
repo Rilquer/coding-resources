@@ -52,24 +52,22 @@ comm <- lapply(1:length(comm),function(x){return(mutate(comm[[x]],island = rep(n
   rename(sciName = 'binomial') %>%
   left_join(coi_data,by=c('island','binomial')) %>%
   select(!c(sequence,aln,)) %>%
-  #replace_na(list(n = 0, pi = 0)) %>%
   mutate(binomial = fct_reorder(binomial,dplyr::desc(total)))
 coeff <- 10^3.2 # Coefficient for second axis
-library(ggthemes)
 
+library(ggthemes)
 comm %>%
   ggplot(aes(x=binomial,y=total,group=island))+
   geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
   stat_smooth(aes(y=total, x=binomial), method = lm, formula = y ~ poly(x, 10), se = FALSE,
-              col = 'lightblue',size=0.5)+
-  geom_point(aes(y=pi*coeff),color='purple')+
+              col = 'red',size=0.5)+
+  geom_point(aes(y=pi*coeff),color='purple',size=1.5)+
   facet_wrap(~island)+
   scale_y_continuous(
     name = "Abundance",
     sec.axis = sec_axis(~./coeff, name="Nuc. Div.")
   )+
   labs(x='Species')+
-  #theme_hc()
-  theme_few()+
+  theme_minimal()+
   theme(axis.text.x = element_blank(),
         axis.ticks = element_blank())

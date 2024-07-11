@@ -292,3 +292,6 @@ comm %>%
   theme(axis.text.x = element_blank(),
         axis.ticks = element_blank())
 ```
+
+#### Step 8. Calculating evenness
+
