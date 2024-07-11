@@ -138,7 +138,6 @@ coi_data <- coi_data %>% left_join(info,by='code')
 
 If we look at `coi_data` now, you will see that we have the original info (code and sequence) plus the new info from our labwork spreadsheet (island and species name). This is our final spreadsheet that we need to start splitting sequences per island per species.
 
-
 #### Step 3. Splitting per island per species
 
 Our *next* final goal is to have a list of species per island and their respective genetic diversity. Therefore, we need to first split all the sequences we have per island, then per species, then align within each species and finally calculate their genetic diversity.
@@ -294,4 +293,3 @@ comm %>%
 ```
 
 #### Step 8. Calculating evenness
-

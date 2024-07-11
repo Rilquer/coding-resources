@@ -1,6 +1,6 @@
 ## ----message=FALSE,warning=FALSE-----------------------------------------------------------------------------------------------------------------------------------------------
 library(tidyverse)
-proj_path <- '/Volumes/G-DRIVE USB/Rilquer/github_repos/coding-resources/evo-bio/bird-barcode/'
+proj_path <- '~/Documents/GitHub/coding-resources/evo-bio/bird-barcode/'
 setwd(proj_path)
 
 ## ----message=FALSE,warning=FALSE-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -49,10 +49,19 @@ coi_data <- coi_data %>% mutate(pi = nuc.div(as.DNAbin(aln[[1]])))
 comm <- readRDS(file = 'data/bird/abundance/comm_counts_samples.rds')
 comm <- lapply(1:length(comm),function(x){return(mutate(comm[[x]],island = rep(names(comm)[x],nrow(comm[[x]]))))}) %>%
   do.call(what = rbind.data.frame) %>% mutate(island = str_to_lower(island)) %>%
-  rename(sciName = 'binomial') %>%
+  rename(sciName = 'binomial') %>% 
+  mutate(binomial = fct_reorder(binomial,dplyr::desc(total)))
+
+comm %>%
+  ggplot(aes(x=fct_reorder(binomial,dplyr::desc(total)),y=total,group=island))+
+  geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
+  #stat_smooth(aes(y=total, x=binomial), method = lm, formula = y ~ poly(x, 10), se = FALSE,
+  #            col = 'red',size=0.5)+
+  facet_wrap(~island)
+
   left_join(coi_data,by=c('island','binomial')) %>%
   select(!c(sequence,aln,)) %>%
-  mutate(binomial = fct_reorder(binomial,dplyr::desc(total)))
+  
 coeff <- 10^3.2 # Coefficient for second axis
 
 library(ggthemes)
