@@ -281,7 +281,8 @@ coeff <- c(11^4,10^3,8^4,150)
 
 dir.create('output')
 library(ggthemes)
-lapply(1:length(comm_gen),function(i){
+for (i in 1:1:length(comm_gen)) {
+#lapply(1:length(comm_gen),function(i){
   ggplot(comm_gen[[i]],aes(x=binomial,y=total))+
     geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
     stat_smooth(aes(y=total, x=as.numeric(binomial)), method = lm,, formula = y ~ poly(x, 10),
@@ -307,8 +308,9 @@ lapply(1:length(comm_gen),function(i){
           axis.title.y = element_text(size=20, vjust = 1.8),
           plot.title = element_text(size=26))+
     ggtitle(names(comm_gen)[i])
-  ggsave(paste0('output/',i,'_',names(comm_gen)[i],'_SAD_pi.png'),width = 9,height = 7,dpi=1200)
-})
+    ggsave(paste0('output/',i,'_',names(comm_gen)[i],'_SAD_pi.png'),width = 9,height = 7,dpi=1200)
+#})
+}
 ```
 
 #### Step 8. Calculating evenness
