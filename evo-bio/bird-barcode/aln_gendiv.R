@@ -43,6 +43,7 @@ coi_data <- coi_data %>% mutate(aln = list(muscle::muscle(sequence[[1]])))
 ## ----message=FALSE,warning=FALSE-----------------------------------------------------------------------------------------------------------------------------------------------
 library(pegas)
 coi_data <- coi_data %>% mutate(pi = nuc.div(as.DNAbin(aln[[1]])))
+saveRDS(coi_data,'data/bird/coi_data.rds')
 
 ## Plotting abundance and genetics
 
@@ -62,7 +63,8 @@ coeff <- 10^4 # Coefficient for second axis
 i=1
 ggplot(comm_gen[[i]],aes(x=binomial,y=total))+
   geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
-  stat_smooth(aes(y=total, x=as.numeric(binomial)), method = lm,, formula = y ~ poly(x, 10),se = FALSE,
+  stat_smooth(aes(y=total, x=as.numeric(binomial)), method = lm,
+              formula = y ~ poly(x, 10),se = FALSE,
               col = 'red',size=0.4,linetype='dashed')+
   geom_point(aes(y=pi*coeff),color='purple',size=3.5)+
   scale_y_continuous(

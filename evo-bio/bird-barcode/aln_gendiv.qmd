@@ -265,11 +265,13 @@ TO BE CONTINUED
 #### Step 7. Comparing abundance and genetic diversity
 
 ```{r message=FALSE,warning=FALSE}
+require(tidyverse)
 comm <- readRDS(file = 'data/bird/abundance/comm_counts_samples.rds')
+coi_data <- readRDS(file = 'data/bird/coi_data.rds')
 comm_gen <- vector('list')
 for (x in names(comm)) {
   comm_gen[[x]] <- comm[[x]] %>% 
-    rename(sciName = 'binomial') %>%
+    rename(sciName = 'binomial') %>% 
     left_join(coi_data[which(coi_data$island==str_to_lower(x)),],by='binomial') %>% 
     select(!c(sequence,aln,island)) %>%
     mutate(binomial = fct_reorder(binomial,dplyr::desc(total)))
@@ -277,7 +279,7 @@ for (x in names(comm)) {
 names(comm_gen) <- names(comm)
 
 #coeff <- c(10^4,rep(10^3.2,3)) # Coefficient for second axis
-coeff <- c(11^4,10^3,8^4,150)
+coeff <- c(11^4,10^3,8^4,300)
 
 dir.create('output')
 library(ggthemes)
@@ -285,7 +287,8 @@ for (i in 1:1:length(comm_gen)) {
 #lapply(1:length(comm_gen),function(i){
   ggplot(comm_gen[[i]],aes(x=binomial,y=total))+
     geom_bar(stat='identity',position = position_dodge(),fill='cadetblue3')+
-    stat_smooth(aes(y=total, x=as.numeric(binomial)), method = lm,, formula = y ~ poly(x, 10),
+    stat_smooth(aes(y=total, x=as.numeric(binomial)), method = lm,
+                formula = y ~ poly(x, 10),
                 se = FALSE,
                 col = 'red',size=0.4,linetype='dashed')+
     geom_point(aes(y=pi*coeff[i]),color='purple',size=3.5)+
